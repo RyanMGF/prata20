@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECIT Dr. Elpídio de Almeida | Site Oficial</title>
+    <meta name="description" content="Site oficial da ECIT Dr. Elpídio de Almeida. Educação, inovação e excelência em Campina Grande, PB.">
+    <meta name="keywords" content="ECIT, Elpídio de Almeida, escola, Campina Grande, Paraíba, educação, cursos técnicos, projetos, esportes, conquistas">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Swiper JS for Carousels -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Custom Styles and Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --prata-blue: #2563eb;
+            --prata-yellow: #FFD700;
+            --prata-red: #e11d48;
+            --prata-green: #22c55e;
+            --prata-gray: #374151;
+        }
+
+        /* Header e Footer */
+        .header-bg {
+            background: var(--prata-blue);
+        }
+        .footer-bg {
+            background: var(--prata-gray);
+        }
+
+        /* Botões principais */
+        .btn-prata {
+            background: linear-gradient(90deg, var(--prata-blue) 60%, var(--prata-yellow) 100%);
+            color: white;
+            font-weight: 700;
+            border-radius: 9999px;
+            box-shadow: 0 2px 8px rgba(29, 78, 216, 0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+        }
+        .btn-prata:hover {
+            background: linear-gradient(90deg, var(--prata-red) 60%, var(--prata-yellow) 100%);
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(29, 78, 216, 0.18);
+        }
+
+        /* Detalhes e bordas */
+        .border-prata-yellow {
+            border-color: var(--prata-yellow) !important;
+        }
+        .text-prata-blue {
+            color: var(--prata-blue) !important;
+        }
+        .text-prata-yellow {
+            color: var(--prata-yellow) !important;
+        }
+        .text-prata-red {
+            color: var(--prata-red) !important;
+        }
+        .text-prata-green {
+            color: var(--prata-green) !important;
+        }
+        .bg-prata-blue {
+            background-color: var(--prata-blue) !important;
+        }
+        .bg-prata-yellow {
+            background-color: var(--prata-yellow) !important;
+        }
+        .bg-prata-red {
+            background-color: var(--prata-red) !important;
+        }
+        .bg-prata-green {
+            background-color: var(--prata-green) !important;
+        }
+        .bg-prata-gray {
+            background-color: var(--prata-gray) !important;
+        }
+
+        /* Links do menu mobile */
+        #mobile-menu a {
+            color: var(--prata-blue);
+            font-weight: 600;
+        }
+        #mobile-menu a:hover {
+            background: var(--prata-yellow);
+            color: var(--prata-red);
+        }
+
+        /* Footer ícones */
+        .footer-social svg {
+            transition: transform 0.2s;
+        }
+        .footer-social svg:hover {
+            transform: scale(1.2);
+        }
+
+        /* Cards de conquistas */
+        .premium-card {
+            border: 2px solid var(--prata-blue);
+            box-shadow: 0 8px 32px rgba(29, 78, 216, 0.12), 0 1.5px 4px rgba(0,0,0,0.08);
+        }
+
+        /* Medalhistas */
+        .border-prata-yellow {
+            border: 4px solid var(--prata-yellow) !important;
+        }
+
+        /* Section divider */
+        .section-divider {
+            height: 4px;
+            width: 80px;
+            margin: 24px auto;
+            background: linear-gradient(90deg, var(--prata-blue), var(--prata-yellow));
+            border-radius: 2px;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            h1, h2, h3, h4 {
+                font-size: 1.25rem !important;
+            }
+            .text-4xl {
+                font-size: 2rem !important;
+            }
+            .text-3xl {
+                font-size: 1.5rem !important;
+            }
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            .swiper-slide {
+                min-height: 300px !important;
+            }
+            .section-divider {
+                width: 40px;
+                margin: 16px auto;
+            }
+            .btn-prata {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+            #mobile-menu {
+                font-size: 1.2rem;
+                background: rgba(255,255,255,0.98);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            }
+            #mobile-menu a {
+                padding: 1rem 0;
+                font-size: 1.1rem;
+            }
+            .fixed.bottom-6.left-6 {
+                bottom: 3rem !important;
+                left: 1rem !important;
+                padding: 0.5rem !important;
+                font-size: 1.2rem !important;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .container {
+                padding-left: 2rem !important;
+                padding-right: 2rem !important;
+            }
+            .swiper-slide {
+                min-height: 400px !important;
+            }
+            .section-divider {
+                width: 60px;
+                margin: 20px auto;
+            }
+            .btn-prata {
+                padding: 1rem 2rem;
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1025px) {
+            .container {
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .swiper-slide {
+                min-height: 500px !important;
+            }
+            .section-divider {
+                width: 80px;
+                margin: 24px auto;
+            }
+            .btn-prata {
+                padding: 1.25rem 2.5rem;
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Hero animation */
+        .hero-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroFadeIn 1.2s ease-out forwards;
+        }
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="fotos/BRASAO.jpg" />
+</head>
+<body class="bg-white font-sans">
+
+    <!-- HEADER AJUSTADO -->
+<header id="header" class="header-bg fixed top-0 left-0 right-0 z-50 shadow-md backdrop-blur-sm transition-all duration-300">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center" aria-label="Navegação principal">
+        <div class="flex items-center">
+            <img src="fotos/BRASAO.jpg" alt="Brasão ECIT Prata" class="h-16 w-16 rounded-full shadow-lg object-cover mr-4" />
+            <span class="text-xl md:text-2xl font-bold text-prata-yellow font-serif" style="font-family: 'Merriweather', serif;">ECIT Dr. Elpídio de Almeida</span>
+        </div>
+        <div class="hidden md:flex space-x-6 items-center" aria-label="Links de navegação">
+            <a href="#projects" class="text-white hover:text-prata-yellow font-semibold transition-colors">Projetos</a>
+            <a href="#courses" class="text-white hover:text-prata-yellow font-semibold transition-colors">Cursos</a>
+            <a href="#sports" class="text-white hover:text-prata-yellow font-semibold transition-colors">Esportes</a>
+            <a href="#achievements" class="text-white hover:text-prata-yellow font-semibold transition-colors">Conquistas</a>
+            <a href="#contact" class="text-white hover:text-prata-yellow font-semibold transition-colors">Contato</a>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden text-prata-yellow" aria-label="Abrir menu mobile">
+            <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden bg-white py-4">
+        <a href="#projects" class="block text-center py-2">Projetos</a>
+        <a href="#courses" class="block text-center py-2">Cursos</a>
+        <a href="#sports" class="block text-center py-2">Esportes</a>
+        <a href="#achievements" class="block text-center py-2">Conquistas</a>
+        <a href="#contact" class="block text-center py-2">Contato</a>
+    </div>
+</header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-[600px] flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('fotos/pratas (1).png');">
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="relative z-10 px-4 flex flex-col items-center justify-center h-full w-full max-w-4xl mx-auto hero-animate">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4 font-serif" style="font-family: 'Merriweather', serif;">
+            Forjando Futuros, Inspirando Gerações
+        </h1>
+        <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-100 mb-8 font-sans">
+            A ECIT Dr. Elpídio de Almeida é mais que uma escola: é um ecossistema de inovação, cidadania e excelência que prepara os jovens da Paraíba para o mundo.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#projects" class="btn-prata py-3 px-8 shadow-lg font-sans" aria-label="Explore Nossos Projetos">
+                Explore Nossos Projetos
+            </a>
+            <a href="#courses" class="btn-prata py-3 px-8 shadow-lg font-sans" aria-label="Conheça Nossos Cursos" style="background: linear-gradient(90deg, var(--prata-green) 60%, var(--prata-yellow) 100%);">
+                Conheça Nossos Cursos
+            </a>
+        </div>
+    </div>
+        </section>
+
+        <!-- Projects Carousel -->
+        <section id="projects" class="py-20 bg-gray-50 animated-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800">Projetos que Transformam</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Aqui, o aprendizado vai além da sala de aula. Nossos projetos desenvolvem liderança, criatividade e impacto social.</p>
+                </div>
+                <div class="relative">
+                    <div class="swiper projects-swiper">
+                        <div class="swiper-wrapper pb-12">
+                            <!-- Slides -->
+                            <div class="swiper-slide">
+                                <div class="group bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
+                                    <img src="fotos/Gemini_Generated_Image_crcdg5crcdg5crcd.png" alt="Semana do Empreendedor" class="w-full h-48 object-cover" loading="lazy" />
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-xl font-bold text-gray-800 mb-2">Semana do Empreendedor</h3>
+                                        <p class="text-gray-600">Alunos criam e gerenciam empresas fictícias, aplicando na prática conceitos de administração e negócios.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="group bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
+                                    <img src="fotos/ginn.jpg" alt="Gincana do Gigantão" class="w-full h-48 object-cover" loading="lazy" />
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-xl font-bold text-gray-800 mb-2">Gincana do Gigantão</h3>
+                                        <p class="text-gray-600">Uma competição que une esporte, cultura e solidariedade, com arrecadação de alimentos e doação de sangue.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="group bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
+                                    <img src="fotos/gin.jpg" alt="Festival de Artes e Cultura" class="w-full h-48 object-cover" loading="lazy" />
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-xl font-bold text-gray-800 mb-2">Festival de Artes e Cultura</h3>
+                                        <p class="text-gray-600">Um palco para os talentos da escola em música, teatro, dança e artes visuais, celebrando a criatividade.</p>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="swiper-button-prev-proj absolute top-1/2 -left-4 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-2 cursor-pointer text-blue-600 hover:bg-blue-50 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </div>
+                    <div class="swiper-button-next-proj absolute top-1/2 -right-4 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-2 cursor-pointer text-blue-600 hover:bg-blue-50 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Courses Section -->
+        <section id="courses" class="py-20 bg-white animated-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800">Cursos Técnicos de Excelência</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Preparamos nossos alunos com habilidades práticas e conhecimento aprofundado para se destacarem no mercado de trabalho.</p>
+                </div>
+                <div id="course-tabs" class="flex justify-center mb-8 border-b">
+                    <button data-tab="administracao" class="course-tab active px-4 md:px-6 py-3 text-md md:text-lg font-semibold transition-colors duration-300 border-b-2 border-blue-600 text-blue-600">Administração</button>
+                    <button data-tab="gastronomia" class="course-tab px-4 md:px-6 py-3 text-md md:text-lg font-semibold transition-colors duration-300 text-gray-500 hover:text-gray-800">Gastronomia</button>
+                    <button data-tab="sistemas" class="course-tab px-4 md:px-6 py-3 text-md md:text-lg font-semibold transition-colors duration-300 text-gray-500 hover:text-gray-800">Desenvolvimento de Sistemas</button>
+                </div>
+                
+                <!-- Administration Content -->
+                <div id="administracao" class="course-content grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div>
+        <h3 class="text-3xl font-bold text-gray-800 mb-4">Administração</h3>
+        <p class="text-gray-600 text-lg mb-6">
+            O curso técnico em Administração é uma das formações mais versáteis e com maior empregabilidade no Brasil. O profissional é a peça-chave que garante o bom funcionamento de organizações de todos os portes e setores, desde empresas privadas e startups até órgãos públicos e ONGs.
+        </p>
+        <div class="space-y-4 mb-8">
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M16 3v18"/></svg>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-700">Mercado de Trabalho</h5>
+                    <p class="text-gray-600">Amplo, estável e entre os que mais geram empregos formais no país. Atuação em finanças, RH, logística, marketing, vendas e setor público.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-700">Perspectiva Salarial (2025)</h5>
+                    <p class="text-gray-600">
+                        Piso: <span class="font-semibold">R$ 3.451,05</span><br>
+                        Média: <span class="font-semibold">R$ 4.483,74</span><br>
+                        Teto: <span class="font-semibold">R$ 7.865,09</span>
+                        <br><span class="text-xs text-gray-400">(Fonte: Salario.com.br, Quero Bolsa)</span>
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 2v8h8"/><path d="M2 13h8v8"/></svg>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-700">Futuro da Profissão</h5>
+                    <ul class="list-disc ml-5 text-gray-600">
+                        <li>Análise de Dados (Big Data) e tomada de decisões estratégicas</li>
+                        <li>Gestão de tecnologias e automação</li>
+                        <li>Liderança, equipes remotas e inteligência emocional</li>
+                        <li>Sustentabilidade (ESG) e visão empreendedora</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mb-8">
+            <p class="font-semibold text-blue-800">Conquista 2025: Mais de 100 alunos aprovados para estágios em empresas parceiras, ainda no ensino médio, com total apoio da escola para inserção no mercado.</p>
+        </div>
+    </div>
+    <div class="rounded-lg overflow-hidden shadow-2xl">
+        <img src="fotos/adm.jpeg" alt="Administração" class="w-full h-auto object-cover" loading="lazy" />
+    </div>
+</div>
+
+                <!-- Gastronomy Content -->
+                <div id="gastronomia" class="course-content hidden grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div>
+        <h3 class="text-3xl font-bold text-gray-800 mb-4">Gastronomia</h3>
+        <p class="text-gray-600 text-lg mb-6">
+            O curso técnico em Gastronomia transforma a paixão pela culinária em uma carreira profissional com vastas oportunidades. O setor está em alta, impulsionado pela valorização de experiências, turismo e novos modelos de negócio.
+        </p>
+        <div class="space-y-4 mb-8">
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 bg-orange-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-700">Mercado de Trabalho</h5>
+                    <p class="text-gray-600">Setor dinâmico e criativo, com oportunidades em restaurantes, hotéis, eventos, consultoria, empreendedorismo, mídia e indústria alimentícia.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 bg-orange-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-700">Perspectiva Salarial (2025)</h5>
+                    <p class="text-gray-600">
+                        Cozinheiro (Técnico/Inicial): <span class="font-semibold">R$ 1.800 a R$ 2.500</span><br>
+                        Chefe de Cozinha/Tecnólogo: <span class="font-semibold">R$ 4.700 a R$ 5.500</span>
+                        <br><span class="text-xs text-gray-400">(Fonte: Quero Bolsa, Salario.com.br)</span>
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 bg-orange-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 2v8h8"/><path d="M2 13h8v8"/></svg>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-700">Futuro da Profissão</h5>
+                    <ul class="list-disc ml-5 text-gray-600">
+                        <li>Tecnologia na cozinha: automação, IA e robôs</li>
+                        <li>Sustentabilidade e consumo consciente</li>
+                        <li>Novos modelos de negócio: dark kitchens, clubes de assinatura</li>
+                        <li>Saúde, bem-estar e personalização de experiências</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mb-8">
+            <p class="font-semibold text-blue-800"> Iniciando nosso semestre com uma aula prática de Técnica de Confeitaria, foram resultados incríveis, viu? Feitas com muita atenção, cuidado e dedicação, 100% aprovado, fizemos uma banoffee com merengue, adoramos! 🧡
+</p>
+        </div>
+    </div>
+    <div class="rounded-lg overflow-hidden shadow-2xl">
+        <img src="fotos/gas.jpg" alt="Gastronomia" class="w-full h-auto object-cover" loading="lazy" />
+    </div>
+</div>
+
+                <!-- Systems Development Content -->
+                <div id="sistemas" class="course-content hidden grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div>
+        <h3 class="text-3xl font-bold text-blue-700 mb-4 font-serif" style="font-family: 'Merriweather', serif;">
+            Desenvolvimento de Sistemas <span class="premium-gold">★</span>
+        </h3>
+        <p class="text-gray-700 text-lg mb-6">
+            O curso técnico em Desenvolvimento de Sistemas é o grande destaque da ECIT Prata. Aqui, tecnologia, criatividade e inovação caminham juntas para formar os profissionais mais disputados do mercado.<br>
+            <span class="font-semibold text-blue-700">Nossos alunos têm acesso a disciplinas de Inteligência Artificial, Segurança de Dados, Desenvolvimento Web & Mobile, além de projetos reais em parceria com empresas e laboratórios da escola.</span>
+        </p>
+        <div class="space-y-4 mb-8">
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 bg-green-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M16 3v18"/></svg>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-700">Mercado de Trabalho</h5>
+                    <p class="text-gray-600">A demanda por desenvolvedores cresce exponencialmente. Nossos alunos já saem com portfólio, experiência prática e oportunidades de estágio garantidas pela escola.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 bg-green-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-700">Perspectiva Salarial (2025)</h5>
+                    <p class="text-gray-600">
+                        Desenvolvedor Júnior: <span class="font-semibold">R$ 3.000 a R$ 5.000</span><br>
+                        Desenvolvedor Pleno/Sênior: <span class="font-semibold">R$ 6.500 a R$ 12.000+</span>
+                        <br><span class="text-xs text-gray-400">(Fonte: Glassdoor, Salario.com.br)</span>
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 bg-green-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 2v8h8"/><path d="M2 13h8v8"/></svg>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-700">Futuro da Profissão</h5>
+                    <ul class="list-disc ml-5 text-gray-600">
+                        <li>Inteligência Artificial e Machine Learning</li>
+                        <li>Segurança de Dados e Cibersegurança</li>
+                        <li>Desenvolvimento Web, Mobile e Cloud</li>
+                        <li>Projetos reais com empresas e laboratórios da escola</li>
+                        <li>Oportunidades de intercâmbio e participação em olimpíadas de tecnologia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mb-8">
+            <p class="font-semibold text-blue-800">
+                Destaque: Alunos do DS conquistaram medalhas na Olimpíada Brasileira de Robótica, criaram aplicativos premiados e participam de projetos de IA e automação com empresas parceiras. 
+                <span class="premium-gold">Aqui, seu futuro começa agora!</span>
+            </p>
+        </div>
+    </div>
+    <div class="rounded-lg overflow-hidden shadow-2xl">
+        <img src="fotos/ds.jpeg" alt="Desenvolvimento de Sistemas" class="w-full h-auto object-cover" loading="lazy" />
+    </div>
+</div>
+            </div>
+        </section>
+
+        <!-- Sports Section -->
+        <section id="sports" class="py-20 bg-gray-800 text-white animated-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold">Nossas Equipes Esportivas</h2>
+                    <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">Disciplina, trabalho em equipe e espírito competitivo. O esporte é parte fundamental da nossa formação.</p>
+                </div>
+                <div class="relative">
+                    <div class="swiper sports-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide">
+                                <div class="group relative rounded-lg overflow-hidden h-[500px]">
+                                    <img src="fotos/futsal.png" alt="Futsal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                    <div class="absolute bottom-0 left-0 p-6">
+                                        <h3 class="text-2xl font-bold">Futsal</h3>
+                                        <p class="text-gray-200 italic">"Campeões da Liga Escolar 2024"</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="group relative rounded-lg overflow-hidden h-[500px]">
+                                    <img src="fotos/volei.png" alt="Voleibol" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                    <div class="absolute bottom-0 left-0 p-6">
+                                        <h3 class="text-2xl font-bold">Voleibol</h3>
+                                        <p class="text-gray-200 italic">"Garra e união em cada ponto."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="group relative rounded-lg overflow-hidden h-[500px]">
+                                    <img src="fotos/basqt.png" alt="Basquete" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                    <div class="absolute bottom-0 left-0 p-6">
+                                        <h3 class="text-2xl font-bold">Basquete</h3>
+                                        <p class="text-gray-200 italic">"Driblando desafios, cestas de superação."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev-sport absolute top-1/2 -left-4 transform -translate-y-1/2 z-10 bg-white/20 rounded-full p-2 cursor-pointer text-white hover:bg-white/40 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </div>
+                    <div class="swiper-button-next-sport absolute top-1/2 -right-4 transform -translate-y-1/2 z-10 bg-white/20 rounded-full p-2 cursor-pointer text-white hover:bg-white/40 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="py-20 bg-gray-50 animated-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800">Nossas Conquistas</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Resultados que comprovam nossa excelência e o potencial ilimitado de nossos alunos.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Achievement Cards -->
+                    <div class="premium-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-blue-600"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Desempenho IDEB</h3>
+                        <p class="text-gray-600">Nota 4,9, superando as médias estadual e nacional, reflexo do nosso compromisso com a qualidade.</p>
+                    </div>
+                    <div class="premium-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-blue-600"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Resultados ENEM</h3>
+                        <p class="text-gray-600">100% de participação dos alunos e notas de destaque, como 980 na redação, abrindo portas para as melhores universidades.</p>
+                    </div>
+                    <div class="premium-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-blue-600"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Hall da Fama</h3>
+                        <p class="text-gray-600">Nossos ex-alunos brilham em intercâmbios internacionais, olimpíadas de conhecimento e no mercado de trabalho.</p>
+                    </div>
+                     <div class="premium-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-blue-600"><path d="M10 2v7.31"/><path d="M14 9.31V2"/><path d="M8.5 2h7"/><path d="M14 9.31 16.57 22H7.43L10 9.31"/><path d="M6.5 14h11"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Laboratórios de Ponta</h3>
+                        <p class="text-gray-600">Estrutura completa com laboratórios de Robótica, Química, Física e Biologia para aprendizado prático.</p>
+                    </div>
+                     <div class="premium-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-blue-600"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Inovação Premiada</h3>
+                        <p class="text-gray-600">Projetos de tecnologia e robótica reconhecidos em competições estaduais e nacionais.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medalhistas Section -->
+        <section id="medalhistas" class="py-20 bg-white animated-section">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-blue-700 font-serif" style="font-family: 'Merriweather', serif;">Medalhistas e Projetos de Orgulho</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                Veja nossos medalhistas e acompanhe mais conquistas no Instagram!
+            </p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-12">
+            <a href="https://instagram.com/ecitprata" target="_blank" rel="noopener" class="group">
+                <img src="fotos/🏆🌵 A PRATA TAMBÉM É DESTAQUE NA OLÍMPIADA MANDACARU DE MATEMÁTICA 2025! 🌵🏆É com muito orgulh.jpg" alt="Medalhista ECIT Prata" class="rounded-2xl shadow-lg border-prata-yellow transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl w-72 h-72 object-cover mx-auto" />
+            </a>
+            <a href="https://instagram.com/ecitprata" target="_blank" rel="noopener" class="group">
+                <img src="fotos/Nossa escola é PRATA e é oportunidade, aprendizado e transformação!Temos orgulho em anunciar que.jpg" alt="Medalhista ECIT Prata" class="rounded-2xl shadow-lg border-prata-yellow transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl w-72 h-72 object-cover mx-auto" />
+            </a>
+        </div>
+    </div>
+</section>
+
+        <!-- Vision Section -->
+        <section id="vision" class="py-20 bg-white animated-section">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <h2 class="text-4xl font-bold text-gray-800 mb-6">Comunidade e Visão de Futuro</h2>
+                        <p class="text-lg text-gray-600 mb-4">
+                            Nossa missão transcende a educação formal. Estamos comprometidos em construir uma comunidade inclusiva, inovadora e consciente do seu papel na sociedade.
+                        </p>
+                        <p class="text-lg text-gray-600">
+                            Investimos em tecnologia, sustentabilidade e no desenvolvimento de habilidades socioemocionais para que nossos alunos não apenas se adaptem ao futuro, mas o construam.
+                        </p>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <img src="fotos/visao.jpg" alt="Visão de Futuro" class="rounded-lg shadow-xl" loading="lazy"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATO SIMPLIFICADO -->
+<section id="contact" class="py-20 bg-gray-50 animated-section">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800">Entre em Contato</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                Fale conosco pelos canais oficiais:
+            </p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-12">
+            <div class="bg-blue-600 text-white p-8 rounded-lg shadow-lg flex flex-col justify-center space-y-6 w-full max-w-md">
+                <div class="flex items-center space-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <div>
+                        <h4 class="font-bold">Telefone</h4>
+                        <p> (83) 3310-6928</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <div>
+                        <h4 class="font-bold">E-mail</h4>
+                        <p>contato@ecitprata.gov.br</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div>
+                        <h4 class="font-bold">Endereço</h4>
+                        <p>Rua Duque de Caxias, 235, Prata, Campina Grande, PB</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <!-- FOOTER MELHORADO COM ÍCONES -->
+<footer class="footer-bg text-gray-200 font-sans">
+    <div class="container mx-auto px-6 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left items-center">
+            <div class="flex flex-col items-center md:items-start">
+                <img src="fotos/BRASAO.jpg" alt="Brasão ECIT Prata" class="h-16 w-16 rounded-full shadow-lg mb-4" />
+                <h3 class="text-2xl font-bold mb-2 font-serif text-prata-yellow" style="font-family: 'Merriweather', serif;">ECIT Dr. Elpídio de Almeida</h3>
+                <p class="text-sm">Educando para a vida, preparando para o futuro.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4 font-serif text-prata-yellow" style="font-family: 'Merriweather', serif;">Links Rápidos</h3>
+                <ul class="space-y-2">
+                    <li><a href="#projects" class="hover:text-prata-yellow transition-colors">Projetos</a></li>
+                    <li><a href="#courses" class="hover:text-prata-yellow transition-colors">Cursos</a></li>
+                    <li><a href="#achievements" class="hover:text-prata-yellow transition-colors">Conquistas</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4 font-serif text-prata-yellow" style="font-family: 'Merriweather', serif;">Siga-nos</h3>
+                <div class="footer-social flex justify-center md:justify-start space-x-4">
+                    <a href="https://facebook.com/ecitprata" target="_blank" aria-label="Facebook">
+                        <svg class="h-8 w-8 text-prata-blue" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 5.019 3.676 9.163 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.261c-1.243 0-1.631.771-1.631 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.324 21.163 22 17.019 22 12"></path></svg>
+                    </a>
+                    <a href="https://instagram.com/ecitprata" target="_blank" aria-label="Instagram">
+                        <svg class="h-8 w-8 text-prata-red" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25.75a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path></svg>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCAxAm0NI_05tuJGT9zGe_Kw" target="_blank" aria-label="YouTube">
+                        <svg class="h-8 w-8 text-prata-yellow" fill="currentColor" viewBox="0 0 24 24"><path d="M21.8 8.001s-.2-1.4-.8-2c-.7-.8-1.5-.8-1.9-.9C16.2 4.999 12 5 12 5h-.1s-4.2-.001-7.1.101c-.4.1-1.2.1-1.9.9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.6c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.7.8 1.5.8 1.9.9C7.8 19.001 12 19 12 19s4.2.001 7.1-.101c.4-.1 1.2-.1 1.9-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.6c0-1.6-.2-3.2-.2-3.2zM10 15.5v-7l6 3.5-6 3.5z"></path></svg>
+                    </a>
+                </div>
+                <div class="mt-6 flex justify-center md:justify-start">
+                    <img src="fotos/GovPBT.png" alt="Governo da Paraíba" class="h-10 w-auto" />
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm">
+            <p>&copy; 2025 Governo do Estado da Paraíba | ECIT Dr. Elpídio de Almeida. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- BOTÃO WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/558333106928" target="_blank" aria-label="WhatsApp" class="fixed bottom-6 right-6 z-50">
+    <svg class="h-12 w-12 rounded-full shadow-lg bg-prata-green p-2 text-white hover:bg-green-600 transition" viewBox="0 0 32 32" fill="currentColor">
+        <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.693 4.607 1.89 6.516L4 29l7.684-2.522A12.96 12.96 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.933 0-3.77-.527-5.34-1.44l-.38-.22-4.56 1.5 1.5-4.44-.25-.41A9.97 9.97 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.13-7.47c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.36-.01-.56-.01-.19 0-.5.07-.76.36-.26.28-1 1-1 2.43s1.03 2.82 1.18 3.02c.15.2 2.03 3.1 4.93 4.22.69.27 1.23.43 1.65.55.69.22 1.32.19 1.82.12.56-.08 1.65-.67 1.88-1.32.23-.65.23-1.21.16-1.32-.07-.11-.25-.18-.53-.32z"/>
+    </svg>
+</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header Scroll Effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('bg-white/90', 'shadow-md', 'backdrop-blur-sm');
+                } else {
+                    header.classList.remove('bg-white/90', 'shadow-md', 'backdrop-blur-sm');
+                }
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuOpenIcon.classList.toggle('hidden');
+                menuCloseIcon.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu on link click
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                });
+            });
+
+            // Projects Swiper
+            new Swiper('.projects-swiper', {
+                loop: true,
+                spaceBetween: 30,
+                slidesPerView: 1,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next-proj',
+                    prevEl: '.swiper-button-prev-proj',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                }
+            });
+
+            // Sports Swiper
+            new Swiper('.sports-swiper', {
+                loop: true,
+                spaceBetween: 30,
+                slidesPerView: 1,
+                 autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next-sport',
+                    prevEl: '.swiper-button-prev-sport',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                }
+            });
+
+            // Courses Tab Functionality
+            const courseTabs = document.querySelectorAll('.course-tab');
+            const courseContents = document.querySelectorAll('.course-content');
+
+            courseTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-tab');
+
+                    courseTabs.forEach(t => {
+                        t.classList.remove('active', 'border-blue-600', 'text-blue-600');
+                        t.classList.add('text-gray-500');
+                    });
+                    tab.classList.add('active', 'border-blue-600', 'text-blue-600');
+                    tab.classList.remove('text-gray-500');
+
+                    courseContents.forEach(content => {
+                        if (content.id === target) {
+                            content.classList.remove('hidden');
+                            content.classList.add('grid');
+                        } else {
+                            content.classList.add('hidden');
+                             content.classList.remove('grid');
+                        }
+                    });
+                });
+            });
+
+            // Scroll Animation Observer
+            const animatedSections = document.querySelectorAll('.animated-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedSections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Contact Form Success Message
+            const contactForm = document.getElementById('contact-form');
+            const formSuccess = document.getElementById('form-success');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    formSuccess.classList.remove('hidden');
+                    contactForm.reset();
+                    setTimeout(() => formSuccess.classList.add('hidden'), 4000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
