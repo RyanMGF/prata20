@@ -1,13 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Header Scroll Effect
     const header = document.getElementById('header');
+    const headerLogo = document.getElementById('header-logo');
+    const headerTitle = document.getElementById('header-title');
+    const logoLink = document.getElementById('logo-link');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
-            header.classList.add('shadow-lg');
-            header.classList.remove('shadow-md');
+            header.classList.add('shadow-lg', 'py-2');
+            header.classList.remove('shadow-md', 'py-4');
+            headerLogo.classList.add('h-12', 'w-12');
+            headerLogo.classList.remove('h-16', 'w-16');
+            headerTitle.classList.add('text-lg', 'sm:text-xl');
+            headerTitle.classList.remove('text-xl', 'md:text-2xl');
         } else {
-            header.classList.remove('shadow-lg');
-            header.classList.add('shadow-md');
+            header.classList.remove('shadow-lg', 'py-2');
+            header.classList.add('shadow-md', 'py-4');
+            headerLogo.classList.remove('h-12', 'w-12');
+            headerLogo.classList.add('h-16', 'w-16');
+            headerTitle.classList.remove('text-lg', 'sm:text-xl');
+            headerTitle.classList.add('text-xl', 'md:text-2xl');
         }
     });
 
@@ -19,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('is-open');
+        setTimeout(() => mobileMenu.classList.toggle('is-open'), 10); // Delay for transition
         menuOpenIcon.classList.toggle('hidden');
         menuCloseIcon.classList.toggle('hidden');
     });
@@ -28,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('is-open');
+            mobileMenu.classList.remove('is-open'); // Reset class
             menuOpenIcon.classList.remove('hidden');
             menuCloseIcon.classList.add('hidden');
         });
@@ -79,28 +90,46 @@ document.addEventListener('DOMContentLoaded', () => {
     // Courses Tab Functionality
     const courseTabs = document.querySelectorAll('.course-tab');
     const courseContents = document.querySelectorAll('.course-content');
+    const activeTabIndicator = document.getElementById('active-tab-indicator');
+
+    const updateIndicator = (activeTab) => {
+        if (activeTab) {
+            activeTabIndicator.style.left = `${activeTab.offsetLeft}px`;
+            activeTabIndicator.style.width = `${activeTab.offsetWidth}px`;
+        }
+    };
 
     courseTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const target = tab.getAttribute('data-tab');
 
             courseTabs.forEach(t => {
-                t.classList.remove('active', 'border-prata-dark', 'text-prata-dark');
+                t.classList.remove('active', 'text-prata-dark');
                 t.classList.add('text-gray-500', 'border-transparent');
             });
-            tab.classList.add('active', 'border-prata-dark', 'text-prata-dark');
+            tab.classList.add('active', 'text-prata-dark');
             tab.classList.remove('text-gray-500', 'border-transparent');
+
+            updateIndicator(tab);
 
             courseContents.forEach(content => {
                 if (content.id === target) {
                     content.classList.remove('hidden');
                     content.classList.add('grid');
+                    content.firstElementChild.classList.add('opacity-0');
+                    content.firstElementChild.style.animation = 'text-fade-in 0.5s forwards';
                 } else {
                     content.classList.add('hidden');
-                     content.classList.remove('grid');
+                    content.classList.remove('grid');
+                    content.firstElementChild.style.animation = '';
                 }
             });
         });
+    });
+
+    logoLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Number Counter Animation
@@ -266,8 +295,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 10); // Delay mínimo
         };
 
-        // Abre o primeiro pop-up assim que a página carrega
-        openEventPopup();
+        // --- Controle de Exibição dos Pop-ups ---
+        // Verifica se os pop-ups já foram mostrados nesta sessão
+        if (!sessionStorage.getItem('popupsShown')) {
+            // Abre o primeiro pop-up após um pequeno delay para não sobrecarregar o carregamento inicial
+            setTimeout(() => {
+                openEventPopup();
+                sessionStorage.setItem('popupsShown', 'true'); // Marca que os pop-ups foram exibidos
+            }, 1500); // Atraso de 1.5 segundos
+        }
 
         // --- Event Listeners ---
         closeEventBtn.addEventListener('click', closeEventPopup);
@@ -287,4 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     })();
+
+    // Initialize active tab indicator on page load
+    updateIndicator(document.querySelector('.course-tab.active'));
 });

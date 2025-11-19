@@ -41,11 +41,13 @@
 <body class="bg-white font-sans">
 
     <!-- HEADER AJUSTADO -->
-<header id="header" class="bg-prata-dark/90 fixed top-0 left-0 right-0 z-50 shadow-md backdrop-blur-sm transition-all duration-300">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center" aria-label="Navegação principal">
+<header id="header" class="bg-prata-dark/90 fixed top-0 left-0 right-0 z-50 shadow-md backdrop-blur-sm transition-all duration-300 py-4">
+    <nav class="container mx-auto px-6 flex justify-between items-center" aria-label="Navegação principal">
         <div class="flex items-center">
-            <img src="fotos/BRASAO.jpg" alt="Brasão ECIT Prata" class="h-16 w-16 rounded-full shadow-lg object-cover mr-4" />
-            <span class="text-xl md:text-2xl font-bold text-white font-serif" style="font-family: 'Merriweather', serif;">ECIT Dr. Elpídio de Almeida</span>
+            <a href="#" id="logo-link" class="flex items-center">
+                <img id="header-logo" src="fotos/BRASAO.jpg" alt="Brasão ECIT Prata" class="h-16 w-16 rounded-full shadow-lg object-cover mr-3 md:mr-4 transition-all duration-300" />
+                <span id="header-title" class="text-lg sm:text-xl md:text-2xl font-bold text-white font-serif transition-all duration-300" style="font-family: 'Merriweather', serif;"><span class="hidden sm:inline">ECIT </span>Dr. Elpídio de Almeida</span>
+            </a>
         </div>
         <div class="hidden md:flex space-x-6 items-center" aria-label="Links de navegação">
             <a href="#projects" class="text-white hover:text-prata-light font-semibold transition-colors">Projetos</a>
@@ -64,7 +66,7 @@
             </svg>
         </button>
     </nav>
-    <div id="mobile-menu" class="hidden md:hidden bg-white py-4 transition-transform duration-300 ease-in-out -translate-y-full">
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-sm py-4 transition-transform duration-300 ease-in-out -translate-y-full">
         <a href="#projects" class="block text-center py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 rounded-md mx-4 transition-colors">Projetos</a>
         <a href="#courses" class="block text-center py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 rounded-md mx-4 transition-colors">Cursos</a>
         <a href="#sports" class="block text-center py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 rounded-md mx-4 transition-colors">Esportes</a>
@@ -76,20 +78,20 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="relative h-[600px] flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('fotos/pratas (1).png');">
-            <div class="absolute inset-0 bg-black/60"></div>
-            <div class="relative z-10 px-4 flex flex-col items-center justify-center h-full w-full max-w-4xl mx-auto hero-animate">
-        <h1 class="text-4xl text-center md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4 font-serif" style="font-family: 'Merriweather', serif;">
-            Forjando Futuros, Inspirando Gerações
+        <section class="relative h-[600px] flex items-center justify-center text-white overflow-hidden">
+            <div class="absolute inset-0 bg-black/70 z-0 hero-bg-animate" style="background-image: url('fotos/pratas (1).png'); background-size: cover; background-position: center;"></div>
+            <div class="relative z-10 px-4 text-center flex flex-col items-center justify-center h-full w-full max-w-4xl mx-auto hero-animate">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4 font-serif" style="font-family: 'Merriweather', serif; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+            Onde cada aluno encontra seu caminho para o futuro.
         </h1>
-        <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-100 mb-8 font-sans">
+        <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-gray-100 mb-8 font-sans" style="text-shadow: 0 1px 5px rgba(0,0,0,0.5);">
             A ECIT Dr. Elpídio de Almeida é mais que uma escola: é um ecossistema de inovação, cidadania e excelência que prepara os jovens da Paraíba para o mundo.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#projects" class="btn-prata py-3 px-8 shadow-lg font-sans transition-transform duration-300 hover:scale-105" aria-label="Explore Nossos Projetos">
                 Explore Nossos Projetos
             </a>
-            <a href="#courses" class="btn-secondary py-3 px-8 shadow-lg font-sans transition-transform duration-300 hover:scale-105" aria-label="Conheça Nossos Cursos">
+            <a href="#courses" class="btn-prata bg-prata-accent hover:bg-prata-dark py-3 px-8 shadow-lg font-sans transition-transform duration-300 hover:scale-105" aria-label="Conheça Nossos Cursos">
                 Conheça Nossos Cursos
             </a>
         </div>
@@ -100,18 +102,18 @@
         <section id="historia" class="py-20 bg-white animated-section">
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div>
+                    <div class="rounded-lg overflow-hidden shadow-xl">
+                        <img src="fotos/visao.jpg" alt="Fachada histórica da ECIT Prata" class="w-full h-full object-cover" loading="lazy"/>
+                    </div>
+                    <div class="opacity-0" style="animation: text-fade-in 0.6s 0.2s ease-out forwards;">
                         <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Uma História de Impacto na Educação Paraibana</h2>
                         <div class="section-divider !mx-0 mb-6"></div>
                         <p class="text-lg text-gray-600 mb-4">
                             Fundada em 31 de janeiro de 1953, a ECIT Dr. Elpídio de Almeida, carinhosamente conhecida como "O Gigantão da Prata", é mais do que uma instituição de ensino; é um pilar na comunidade de Campina Grande.
                         </p>
-                        <p class="text-lg text-gray-600">
+                        <p class="text-lg text-gray-600 font-semibold text-prata-dark">
                             Nossa missão é oferecer uma educação pública, gratuita e de excelência, combinando uma base curricular sólida com cursos técnicos que preparam nossos jovens para os desafios do futuro, formando não apenas profissionais qualificados, mas cidadãos conscientes e protagonistas de suas próprias histórias.
                         </p>
-                    </div>
-                    <div>
-                        <img src="fotos/visao.jpg" alt="Fachada histórica da ECIT Prata" class="rounded-lg shadow-xl" loading="lazy"/>
                     </div>
                 </div>
             </div>
@@ -125,16 +127,21 @@
                     <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Preparamos nossos alunos com habilidades práticas e conhecimento aprofundado para se destacarem no mercado de trabalho.</p>
                     <div class="section-divider"></div>
                 </div>
-                <div id="course-tabs" class="flex justify-center mb-8 border-b">
-                    <button data-tab="administracao" class="course-tab active px-4 md:px-6 py-3 text-md md:text-lg font-semibold transition-all duration-300 border-b-[3px] border-prata-dark text-prata-dark">Administração</button>
-                    <button data-tab="gastronomia" class="course-tab px-4 md:px-6 py-3 text-md md:text-lg font-semibold transition-colors duration-300 text-gray-500 hover:text-gray-800">Gastronomia</button>
-                    <button data-tab="sistemas" class="course-tab px-4 md:px-6 py-3 text-md md:text-lg font-semibold transition-colors duration-300 text-gray-500 hover:text-gray-800">Sistemas</button>
+                <div id="course-tabs-container" class="relative mb-8 border-b border-gray-200">
+                    <div class="course-tabs-scroller overflow-x-auto">
+                        <div id="course-tabs" class="flex justify-start md:justify-center whitespace-nowrap">
+                            <button data-tab="administracao" class="course-tab active px-4 md:px-6 py-3 text-base md:text-lg font-semibold transition-all duration-300 border-b-[3px] border-transparent text-prata-dark">Administração</button>
+                            <button data-tab="gastronomia" class="course-tab px-4 md:px-6 py-3 text-base md:text-lg font-semibold transition-colors duration-300 text-gray-500 hover:text-prata-dark border-b-[3px] border-transparent">Gastronomia</button>
+                            <button data-tab="sistemas" class="course-tab px-4 md:px-6 py-3 text-base md:text-lg font-semibold transition-colors duration-300 text-gray-500 hover:text-prata-dark border-b-[3px] border-transparent">Sistemas</button>
+                        </div>
+                    </div>
+                    <div id="active-tab-indicator"></div>
                 </div>
                 
                 <!-- Administration Content -->
                 <div id="administracao" class="course-content grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
     <div>
-        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Administração</h3>
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 md:h-8 md:w-8 text-prata-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg> Administração</h3>
         <p class="text-gray-600 text-lg mb-6">
             O curso técnico em Administração é uma das formações mais versáteis e com maior empregabilidade no Brasil. O profissional é a peça-chave que garante o bom funcionamento de organizações de todos os portes e setores, desde empresas privadas e startups até órgãos públicos e ONGs.
         </p>
@@ -177,19 +184,22 @@
                 </div>
             </div>
         </div>
-        <div class="bg-gray-100 border-l-4 border-prata-accent p-4 rounded-r-lg mb-8">
-            <p class="font-semibold text-prata-dark">Conquista 2025: Mais de 100 alunos aprovados para estágios em empresas parceiras, ainda no ensino médio, com total apoio da escola para inserção no mercado.</p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg mb-8 flex items-center gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+            <div>
+                <p class="font-semibold text-green-800">Conquista 2025: Mais de 100 alunos aprovados para estágios em empresas parceiras, ainda no ensino médio, com total apoio da escola para inserção no mercado.</p>
+            </div>
         </div>
     </div>
-    <div class="rounded-lg overflow-hidden shadow-2xl">
-        <img src="fotos/adm.jpeg" alt="Administração" class="w-full h-auto object-cover" loading="lazy" />
+    <div class="rounded-lg overflow-hidden shadow-2xl group">
+        <img src="fotos/adm.jpeg" alt="Administração" class="w-full h-auto object-cover transition-all duration-300 group-hover:brightness-110" loading="lazy" />
     </div>
 </div>
 
                 <!-- Gastronomy Content -->
                 <div id="gastronomia" class="course-content hidden grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div>
-        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Gastronomia</h3>
+    <div class="opacity-0" style="animation: text-fade-in 0.5s forwards;">
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 md:h-8 md:w-8 text-prata-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A8.003 8.003 0 0121.5 1.5c.552 3.5-1.443 6.833-4.828 9.828A9.959 9.959 0 0117.657 18.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.343 12.343L6.343 15.343m1.414-1.414l1.414-1.414" /></svg> Gastronomia</h3>
         <p class="text-gray-600 text-lg mb-6">
             O curso técnico em Gastronomia transforma a paixão pela culinária em uma carreira profissional com vastas oportunidades. O setor está em alta, impulsionado pela valorização de experiências, turismo e novos modelos de negócio.
         </p>
@@ -231,24 +241,26 @@
                 </div>
             </div>
         </div>
-        <div class="bg-gray-100 border-l-4 border-prata-accent p-4 rounded-r-lg mb-8">
-            <p class="font-semibold text-prata-dark"> Iniciando nosso semestre com uma aula prática de Técnica de Confeitaria, foram resultados incríveis, viu? Feitas com muita atenção, cuidado e dedicação, 100% aprovado, fizemos uma banoffee com merengue, adoramos!
-</p>
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-8 flex items-center gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345h5.518a.562.562 0 01.32.959l-4.49 3.252a.563.563 0 00-.194.548l1.735 5.395a.563.563 0 01-.82.623l-4.49-3.252a.563.563 0 00-.65 0L6.08 22.39a.563.563 0 01-.82-.623l1.735-5.395a.563.563 0 00-.194-.548l-4.49-3.252a.562.562 0 01.32-.959h5.518a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
+            <div>
+                <p class="font-semibold text-blue-800"> Iniciando nosso semestre com uma aula prática de Técnica de Confeitaria, foram resultados incríveis, viu? Feitas com muita atenção, cuidado e dedicação, 100% aprovado, fizemos uma banoffee com merengue, adoramos!</p>
+            </div>
         </div>
     </div>
-    <div class="rounded-lg overflow-hidden shadow-2xl">
-        <img src="fotos/gas.jpg" alt="Gastronomia" class="w-full h-auto object-cover" loading="lazy" />
+    <div class="rounded-lg overflow-hidden shadow-2xl group">
+        <img src="fotos/gas.jpg" alt="Gastronomia" class="w-full h-auto object-cover transition-all duration-300 group-hover:brightness-110" loading="lazy" />
     </div>
 </div>
 
                 <!-- Systems Development Content -->
                 <div id="sistemas" class="course-content hidden grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div>
-        <h3 class="text-2xl md:text-3xl font-bold text-prata-dark mb-4 font-serif" style="font-family: 'Merriweather', serif;">
-            Desenvolvimento de Sistemas <span class="premium-gold">★</span>
+    <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 md:p-8 rounded-lg shadow-inner opacity-0" style="animation: text-fade-in 0.5s forwards;">
+        <h3 class="text-2xl md:text-3xl font-bold text-prata-dark mb-4 font-serif flex flex-wrap items-center gap-3" style="font-family: 'Merriweather', serif;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 md:h-8 md:w-8 text-prata-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg> Desenvolvimento de Sistemas <span class="ml-auto text-xs sm:text-sm font-bold text-yellow-500 bg-yellow-100 px-3 py-1 rounded-full">★ CURSO DESTAQUE</span>
         </h3>
         <p class="text-gray-700 text-lg mb-6">
-            O curso técnico em Desenvolvimento de Sistemas é o grande destaque da ECIT Prata. Aqui, tecnologia, criatividade e inovação caminham juntas para formar os profissionais mais disputados do mercado.<br>
+            Este é o curso de ponta da ECIT Prata. Aqui, tecnologia, criatividade e inovação caminham juntas para formar os profissionais mais disputados do mercado.<br>
             <span class="font-semibold text-prata-dark">Nossos alunos têm acesso a disciplinas de Inteligência Artificial, Segurança de Dados, Desenvolvimento Web & Mobile, além de projetos reais em parceria com empresas e laboratórios da escola.</span>
         </p>
         <div class="space-y-4 mb-8">
@@ -290,15 +302,18 @@
                 </div>
             </div>
         </div>
-        <div class="bg-gray-100 border-l-4 border-prata-accent p-4 rounded-r-lg mb-8">
-            <p class="font-semibold text-prata-dark">
-                Destaque: Alunos do DS conquistaram medalhas na Olimpíada Brasileira de Robótica, criaram aplicativos premiados e participam de projetos de IA e automação com empresas parceiras. 
-                <span class="premium-gold">Aqui, seu futuro começa agora!</span>
-            </p>
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg mb-8 flex items-center gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9a9.75 9.75 0 100-13.5h9a9.75 9.75 0 000 13.5z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75h.008v.008H12v-.008z" /></svg>
+            <div>
+                <p class="font-semibold text-yellow-800">
+                    Destaque: Alunos do DS conquistaram medalhas na Olimpíada Brasileira de Robótica, criaram aplicativos premiados e participam de projetos de IA e automação com empresas parceiras. 
+                    <span class="font-bold">Aqui, seu futuro começa agora!</span>
+                </p>
+            </div>
         </div>
     </div>
-    <div class="rounded-lg overflow-hidden shadow-2xl">
-        <img src="fotos/ds.jpeg" alt="Desenvolvimento de Sistemas" class="w-full h-auto object-cover" loading="lazy" />
+    <div class="rounded-lg overflow-hidden shadow-2xl group">
+        <img src="fotos/ds.jpeg" alt="Desenvolvimento de Sistemas" class="w-full h-auto object-cover transition-all duration-300 group-hover:brightness-110" loading="lazy" />
     </div>
 </div>
             </div>
@@ -316,28 +331,32 @@
                     <!-- News Card 1 (Note: The image inside already has a group-hover effect, which is great!) -->
                     <article class="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
                         <a href="#" class="block">
-                            <div class="overflow-hidden">
-                                <img src="fotos/ginn.jpg" alt="Gincana do Gigantão" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                            <div class="overflow-hidden relative">
+                                <span class="absolute top-4 left-4 bg-prata-dark/80 backdrop-blur-sm text-white text-xs font-bold uppercase px-2 py-1 rounded z-10">Comunidade</span>
+                                <video autoplay loop muted playsinline poster="fotos/gincana.mp4" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <source src="fotos/gincana.mp4" type="video/mp4">
+                                </video>
                             </div>
                             <div class="p-6 flex-grow flex flex-col">
-                                <time datetime="2025-05-20" class="text-sm text-gray-500 mb-2">20 de Maio, 2025</time>
+                                <time datetime="2025-05-20" class="text-sm text-gray-500 mb-2">15 de Novembro, 2025</time>
                                 <h3 class="text-xl font-bold text-gray-800 mb-3">Gincana do Gigantão 2025 Bate Recorde de Arrecadação</h3>
-                                <p class="text-gray-600 mb-4 flex-grow">A edição deste ano da Gincana do Gigantão mobilizou toda a escola e comunidade, resultando na maior arrecadação de alimentos da história do evento.</p>
-                                <span class="font-semibold text-prata-dark group-hover:text-prata-accent transition-colors">Leia mais &rarr;</span>
+                                <p class="text-gray-600 mb-4 flex-grow">Na última gincana da nossa escola, unimos forças e corações para arrecadar itens de higiene pessoal, fortalecendo ainda mais o espírito de solidariedade que nos move. O resultado desse gesto coletivo pôde ser sentido na última quarta-feira, quando tivemos a alegria e a honra de realizar uma das doações no São Vicente de Paulo.</p>
+                                <span class="font-semibold text-prata-dark group-hover:text-prata-accent transition-colors mt-auto">Leia mais <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span></span>
                             </div>
                         </a>
                     </article>
                     <!-- News Card 2 (Note: The image inside already has a group-hover effect, which is great!) -->
                     <article class="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
                         <a href="#" class="block">
-                            <div class="overflow-hidden">
+                            <div class="overflow-hidden relative">
+                                <span class="absolute top-4 left-4 bg-prata-dark text-white text-xs font-bold uppercase px-2 py-1 rounded z-10">Tecnologia</span>
                                 <img src="fotos/ds.jpeg" alt="Olimpíada de Robótica" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                             </div>
                             <div class="p-6 flex-grow flex flex-col">
                                 <time datetime="2025-05-15" class="text-sm text-gray-500 mb-2">15 de Maio, 2025</time>
                                 <h3 class="text-xl font-bold text-gray-800 mb-3">Alunos de DS se Preparam para a Olimpíada Nacional de Robótica</h3>
                                 <p class="text-gray-600 mb-4 flex-grow">Nossas equipes de robótica estão na fase final de preparação para a competição nacional, com protótipos inovadores desenvolvidos nos laboratórios da escola.</p>
-                                <span class="font-semibold text-prata-dark group-hover:text-prata-accent transition-colors">Leia mais &rarr;</span>
+                                <span class="font-semibold text-prata-dark group-hover:text-prata-accent transition-colors mt-auto">Leia mais <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span></span>
                             </div>
                         </a>
                     </article>
@@ -346,7 +365,9 @@
         </section>
 
         <!-- Sports Section -->
-        <section id="sports" class="py-16 md:py-20 bg-prata-dark text-white animated-section">
+        <section id="sports" class="py-16 md:py-20 bg-prata-dark text-white animated-section relative overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('fotos/torcida.png');"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-prata-dark via-prata-dark to-prata-dark/80"></div>
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold">Vida Esportiva e Competição</h2>
@@ -357,15 +378,15 @@
                 <!-- Modalities and Internal Games -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-center">
                     <div>
-                        <h3 class="text-2xl md:text-3xl font-bold mb-4">Modalidades Oferecidas</h3>
-                        <ul class="space-y-2 text-lg text-gray-200">
-                            <li class="flex items-center"><span class="text-prata-light mr-3">✓</span> Futsal (Masculino e Feminino)</li>
-                            <li class="flex items-center"><span class="text-prata-light mr-3">✓</span> Voleibol (Masculino e Feminino)</li>
-                            <li class="flex items-center"><span class="text-prata-light mr-3">✓</span> Basquete</li>
-                            <li class="flex items-center"><span class="text-prata-light mr-3">✓</span> Handebol</li>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6">Modalidades Oferecidas</h3>
+                        <ul class="space-y-4 text-lg text-gray-200">
+                            <li class="flex items-center gap-3"><img src="fotos/futsal-icon.svg" class="h-7 w-7" alt=""/> Futsal (Masculino e Feminino)</li>
+                            <li class="flex items-center gap-3"><img src="fotos/volei-icon.svg" class="h-7 w-7" alt=""/> Voleibol (Masculino e Feminino)</li>
+                            <li class="flex items-center gap-3"><img src="fotos/basquete-icon.svg" class="h-7 w-7" alt=""/> Basquete</li>
+                            <li class="flex items-center gap-3"><img src="fotos/handebol-icon.svg" class="h-7 w-7" alt=""/> Handebol</li>
                         </ul>
                     </div>
-                    <div class="bg-prata-accent/20 p-6 rounded-lg">
+                    <div class="bg-white/10 p-8 rounded-lg backdrop-blur-sm border border-white/20">
                         <h3 class="text-2xl md:text-3xl font-bold mb-4">Jogos Internos</h3>
                         <p class="text-lg text-gray-200">
                             Anualmente, a ECIT Prata sedia os Jogos Internos, um evento que mobiliza toda a escola em uma celebração de esporte e integração. As competições acirradas e a torcida vibrante fortalecem os laços e o orgulho de ser Gigantão.
@@ -380,39 +401,39 @@
                             <div class="swiper-slide">
                                 <div class="group relative rounded-lg overflow-hidden h-[500px]">
                                     <img src="fotos/time.jpeg" alt="Futsal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent"></div>
                                     <div class="absolute bottom-0 left-0 p-6">
-                                        <h3 class="text-2xl font-bold">Futsal</h3>
-                                        <p class="text-gray-200 italic">"Avante!"</p>
+                                        <h3 class="text-2xl font-bold" style="text-shadow: 0 1px 4px #000;">Futsal</h3>
+                                        <p class="text-gray-200 italic" style="text-shadow: 0 1px 4px #000;">"Avante!"</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="group relative rounded-lg overflow-hidden h-[500px]">
                                     <img src="fotos/volei.png" alt="Voleibol" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent"></div>
                                     <div class="absolute bottom-0 left-0 p-6">
-                                        <h3 class="text-2xl font-bold">Voleibol</h3>
-                                        <p class="text-gray-200 italic">"Garra e união em cada ponto."</p>
+                                        <h3 class="text-2xl font-bold" style="text-shadow: 0 1px 4px #000;">Voleibol</h3>
+                                        <p class="text-gray-200 italic" style="text-shadow: 0 1px 4px #000;">"Garra e união em cada ponto."</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="group relative rounded-lg overflow-hidden h-[500px]">
                                     <img src="fotos/basqt.png" alt="Basquete" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent"></div>
                                     <div class="absolute bottom-0 left-0 p-6">
-                                        <h3 class="text-2xl font-bold">Basquete</h3>
-                                        <p class="text-gray-200 italic">"Driblando desafios, cestas de superação."</p>
+                                        <h3 class="text-2xl font-bold" style="text-shadow: 0 1px 4px #000;">Basquete</h3>
+                                        <p class="text-gray-200 italic" style="text-shadow: 0 1px 4px #000;">"Driblando desafios, cestas de superação."</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-prev-sport absolute top-1/2 -left-4 transform -translate-y-1/2 z-10 bg-white/20 rounded-full p-3 cursor-pointer text-white hover:bg-white/40 transition-all duration-300 hover:scale-110">
+                    <div class="swiper-button-prev-sport swiper-button-mobile-adj absolute top-1/2 -left-2 md:-left-4 transform -translate-y-1/2 z-10 bg-white/30 rounded-full p-3 cursor-pointer text-white hover:bg-white/50 transition-all duration-300 hover:scale-110">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                     </div>
-                    <div class="swiper-button-next-sport absolute top-1/2 -right-4 transform -translate-y-1/2 z-10 bg-white/20 rounded-full p-3 cursor-pointer text-white hover:bg-white/40 transition-all duration-300 hover:scale-110">
+                    <div class="swiper-button-next-sport swiper-button-mobile-adj absolute top-1/2 -right-2 md:-right-4 transform -translate-y-1/2 z-10 bg-white/30 rounded-full p-3 cursor-pointer text-white hover:bg-white/50 transition-all duration-300 hover:scale-110">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                     </div>
                 </div>
@@ -431,26 +452,29 @@
                     <div class="swiper projects-swiper">
                         <div class="swiper-wrapper pb-12">
                             <!-- Slides -->
-                            <div class="swiper-slide h-auto">
-                                <div class="group bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
+                            <div class="swiper-slide h-auto pb-2">
+                                <div class="project-card-aurora group rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col" style="background-image: linear-gradient(135deg, #f9fafb, #f3f4f6, #e5e7eb, #d1d5db);">
+                                    <span class="absolute top-4 left-4 bg-prata-dark text-white text-xs font-bold uppercase px-2 py-1 rounded z-10">Inovação</span>
                                     <img src="fotos/seman.jpg" alt="Semana do Empreendedor" class="w-full h-48 object-cover" loading="lazy" />
                                     <div class="p-6 flex-grow">
                                         <h3 class="text-xl font-bold text-gray-800 mb-2">Semana do Empreendedor</h3>
-                                        <p class="text-gray-600">Alunos criam e gerenciam empresas fictícias, aplicando na prática conceitos de administração e negócios.</p>
+                                        <p class="text-gray-600">Alunos criam e gerenciam empresas, aplicando na prática conceitos de administração e negócios.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide h-auto">
-                                <div class="group bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
+                            <div class="swiper-slide h-auto pb-2">
+                                <div class="project-card-aurora group rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col" style="background-image: linear-gradient(135deg, #eff6ff, #dbeafe, #bfdbfe, #93c5fd);">
+                                    <span class="absolute top-4 left-4 bg-prata-dark text-white text-xs font-bold uppercase px-2 py-1 rounded z-10">Comunidade</span>
                                     <img src="fotos/ginn.jpg" alt="Gincana do Gigantão" class="w-full h-48 object-cover" loading="lazy" />
                                     <div class="p-6 flex-grow">
                                         <h3 class="text-xl font-bold text-gray-800 mb-2">Gincana do Gigantão</h3>
-                                        <p class="text-gray-600">Uma competição que une esporte, cultura e solidariedade, com arrecadação de alimentos e doação de sangue.</p>
+                                        <p class="text-gray-600">Competição que une esporte, cultura e solidariedade, com arrecadação de alimentos e doação de sangue.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide h-auto">
-                                <div class="group bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
+                            <div class="swiper-slide h-auto pb-2">
+                                <div class="project-card-aurora group rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col" style="background-image: linear-gradient(135deg, #f0fdf4, #dcfce7, #bbf7d0, #86efac);">
+                                    <span class="absolute top-4 left-4 bg-prata-dark text-white text-xs font-bold uppercase px-2 py-1 rounded z-10">Cultura</span>
                                     <img src="fotos/gin.jpg" alt="Festival de Artes e Cultura" class="w-full h-48 object-cover" loading="lazy" />
                                     <div class="p-6 flex-grow">
                                         <h3 class="text-xl font-bold text-gray-800 mb-2">Festival de Artes e Cultura</h3>
@@ -461,10 +485,10 @@
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-button-prev-proj absolute top-1/2 -left-4 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-2 cursor-pointer text-prata-dark hover:bg-gray-100 transition-colors">
+                    <div class="swiper-button-prev-proj swiper-button-mobile-adj absolute top-1/2 -left-2 md:-left-4 transform -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm rounded-full shadow-md p-3 cursor-pointer text-prata-dark hover:bg-white transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                     </div>
-                    <div class="swiper-button-next-proj absolute top-1/2 -right-4 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-2 cursor-pointer text-prata-dark hover:bg-gray-100 transition-colors">
+                    <div class="swiper-button-next-proj swiper-button-mobile-adj absolute top-1/2 -right-2 md:-right-4 transform -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm rounded-full shadow-md p-3 cursor-pointer text-prata-dark hover:bg-white transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                     </div>
                 </div>
@@ -482,23 +506,23 @@
 
                 <!-- Stats Counter -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-20">
-                    <div>
-                        <h4 class="text-4xl md:text-5xl font-extrabold text-prata-dark counter-number" data-target="4.9">0</h4>
-                        <p class="text-lg text-gray-600 mt-2">Nota no IDEB</p>
+                    <div class="p-4">
+                        <h4 class="text-4xl sm:text-5xl font-extrabold text-prata-dark counter-number" data-target="4.9">0</h4>
+                        <p class="text-base sm:text-lg text-gray-600 mt-2">Nota no IDEB</p>
                         <p class="text-sm text-prata-accent mt-1">(Média estadual: 4.0 | Média nacional: 3.9)</p>
                     </div>
-                    <div>
-                        <h4 class="text-4xl md:text-5xl font-extrabold text-prata-dark">
+                    <div class="p-4">
+                        <h4 class="text-4xl sm:text-5xl font-extrabold text-prata-dark">
                             <span class="counter-number" data-target="980">0</span>
                         </h4>
-                        <p class="text-lg text-gray-600 mt-2">Nota Máxima na Redação do ENEM</p>
+                        <p class="text-base sm:text-lg text-gray-600 mt-2">Nota Máxima na Redação do ENEM</p>
                         <p class="text-sm text-prata-accent mt-1">Desempenho que posiciona o aluno entre os melhores do país.</p>
                     </div>
-                    <div>
-                        <h4 class="text-4xl md:text-5xl font-extrabold text-prata-dark">
+                    <div class="p-4">
+                        <h4 class="text-4xl sm:text-5xl font-extrabold text-prata-dark">
                             <span class="counter-number" data-target="100">0</span>%
                         </h4>
-                        <p class="text-lg text-gray-600 mt-2">de Participação no ENEM</p>
+                        <p class="text-base sm:text-lg text-gray-600 mt-2">de Participação no ENEM</p>
                         <p class="text-sm text-prata-accent mt-1">Compromisso total com o futuro de cada estudante.</p>
                     </div>
                 </div>
@@ -507,14 +531,20 @@
                 <div class="text-center my-20">
                     <h3 class="text-2xl md:text-3xl font-bold text-gray-700">Destaques Individuais e Coletivos</h3>
                     <p class="mt-2 text-lg text-gray-600">Nossos alunos brilham em olimpíadas, projetos e competições.</p>
-                    <div class="section-divider"></div>
-                    <div class="flex flex-col md:flex-row justify-center items-center gap-12 mt-8">
-                        <a href="https://instagram.com/ecitprata" target="_blank" rel="noopener" class="group">
-                            <img src="fotos/🏆🌵 A PRATA TAMBÉM É DESTAQUE NA OLÍMPIADA MANDACARU DE MATEMÁTICA 2025! 🌵🏆É com muito orgulh.jpg" alt="Medalhista ECIT Prata" class="rounded-2xl shadow-lg border-prata-light transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl w-72 h-72 object-cover mx-auto" />
-                        </a>
-                        <a href="https://instagram.com/ecitprata" target="_blank" rel="noopener" class="group">
-                            <img src="fotos/Nossa escola é PRATA e é oportunidade, aprendizado e transformação!Temos orgulho em anunciar que.jpg" alt="Medalhista ECIT Prata" class="rounded-2xl shadow-lg border-prata-light transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl w-72 h-72 object-cover mx-auto" />
-                        </a>
+                    <div class="section-divider mb-8"></div>
+                    <div class="flex flex-col md:flex-row justify-center items-start gap-12">
+                        <figure class="text-center">
+                            <a href="https://instagram.com/ecitprata" target="_blank" rel="noopener" class="group">
+                                <img src="fotos/🏆🌵 A PRATA TAMBÉM É DESTAQUE NA OLÍMPIADA MANDACARU DE MATEMÁTICA 2025! 🌵🏆É com muito orgulh.jpg" alt="Medalhista ECIT Prata" class="rounded-2xl shadow-lg border-prata-light transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl w-72 h-72 object-cover mx-auto" />
+                            </a>
+                            <figcaption class="mt-3 text-sm text-gray-500">Alunos premiados na Olimpíada Mandacaru de Matemática.</figcaption>
+                        </figure>
+                        <figure class="text-center">
+                            <a href="https://instagram.com/ecitprata" target="_blank" rel="noopener" class="group">
+                                <img src="fotos/Nossa escola é PRATA e é oportunidade, aprendizado e transformação!Temos orgulho em anunciar que.jpg" alt="Medalhista ECIT Prata" class="rounded-2xl shadow-lg border-prata-light transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl w-72 h-72 object-cover mx-auto" />
+                            </a>
+                            <figcaption class="mt-3 text-sm text-gray-500">Estudantes aprovados em universidades federais.</figcaption>
+                        </figure>
                     </div>
                 </div>
 
@@ -573,21 +603,21 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div class="bg-prata-dark text-white p-8 rounded-lg shadow-lg flex flex-col justify-center space-y-6 h-full">
                 <div class="flex items-center space-x-4 group cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0 text-prata-light" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     <div class="transition-transform duration-300 group-hover:translate-x-2">
                         <h4 class="font-bold">Telefone</h4>
                         <p> (83) 3310-6928</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4 group cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0 text-prata-light" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                     <div class="transition-transform duration-300 group-hover:translate-x-2">
                         <h4 class="font-bold">E-mail</h4>
                         <p>contato@ecitprata.gov.br</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4 group cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0 text-prata-light" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     <div class="transition-transform duration-300 group-hover:translate-x-2">
                         <h4 class="font-bold">Endereço</h4>
                         <p>Rua Duque de Caxias, 235, Prata, Campina Grande, PB</p>
@@ -653,29 +683,32 @@
 </footer>
 
 <!-- BOTÕES FLUTUANTES -->
-<div class="fixed bottom-6 right-4 md:right-6 z-50 flex flex-col items-center space-y-4">
-    <!-- Botão Voltar ao Topo -->
-    <button id="back-to-top" class="hidden h-12 w-12 rounded-full shadow-lg bg-prata-accent p-2 text-white transition-all duration-300 hover:bg-prata-dark hover:scale-110 focus:outline-none focus:ring-2 focus:ring-prata-light focus:ring-offset-2" aria-label="Voltar ao topo">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-full h-full">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-        </svg>
-    </button>
-
-    <!-- Botão IA -->
-    <a href="https://prataia.vercel.app/" target="_blank" aria-label="Converse com nossa IA" class="group">
-        <img src="fotos/logo.png" alt="Mascote IA" class="h-14 w-14 rounded-full shadow-lg bg-white p-1 transition-transform duration-300 group-hover:scale-110">
-    </a>
-    <!-- Botão WhatsApp -->
-    <a href="https://wa.me/558333106928" target="_blank" aria-label="WhatsApp" class="group">
-        <svg class="h-14 w-14 rounded-full shadow-lg bg-prata-dark p-3 text-white transition-all duration-300 group-hover:bg-prata-accent group-hover:scale-110" viewBox="0 0 32 32" fill="currentColor">
-            <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.693 4.607 1.89 6.516L4 29l7.684-2.522A12.96 12.96 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.933 0-3.77-.527-5.34-1.44l-.38-.22-4.56 1.5 1.5-4.44-.25-.41A9.97 9.97 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.13-7.47c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.36-.01-.56-.01-.19 0-.5.07-.76.36-.26.28-1 1-1 2.43s1.03 2.82 1.18 3.02c.15.2 2.03 3.1 4.93 4.22.69.27 1.23.43 1.65.55.69.22 1.32.19 1.82.12.56-.08 1.65-.67 1.88-1.32.23-.65.23-1.21.16-1.32-.07-.11-.25-.18-.53-.32z"/>
-        </svg>
-    </a>
+<div class="fixed bottom-6 right-4 md:right-6 z-50">
+    <div class="flex flex-col items-center space-y-3 md:space-y-4">
+        <!-- Botão IA -->
+        <a href="https://prataia.vercel.app/" target="_blank" aria-label="Converse com nossa IA" class="group relative">
+            <img src="fotos/logo.png" alt="Mascote IA" class="h-12 w-12 md:h-14 md:w-14 rounded-full shadow-lg bg-white p-1 transition-transform duration-300 group-hover:scale-110">
+            <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-prata-dark text-white text-xs font-bold px-3 py-1.5 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Converse com a IA</span>
+        </a>
+        <!-- Botão WhatsApp -->
+        <a href="https://wa.me/558333106928" target="_blank" aria-label="WhatsApp" class="group relative">
+            <svg class="h-12 w-12 md:h-14 md:w-14 rounded-full shadow-lg bg-prata-dark p-2.5 md:p-3 text-white transition-all duration-300 group-hover:bg-prata-accent group-hover:scale-110" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.693 4.607 1.89 6.516L4 29l7.684-2.522A12.96 12.96 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.933 0-3.77-.527-5.34-1.44l-.38-.22-4.56 1.5 1.5-4.44-.25-.41A9.97 9.97 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.13-7.47c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.36-.01-.56-.01-.19 0-.5.07-.76.36-.26.28-1 1-1 2.43s1.03 2.82 1.18 3.02c.15.2 2.03 3.1 4.93 4.22.69.27 1.23.43 1.65.55.69.22 1.32.19 1.82.12.56-.08 1.65-.67 1.88-1.32.23-.65.23-1.21.16-1.32-.07-.11-.25-.18-.53-.32z"/>
+            </svg>
+            <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-prata-dark text-white text-xs font-bold px-3 py-1.5 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Fale no WhatsApp</span>
+        </a>
+        <!-- Botão Voltar ao Topo -->
+        <button id="back-to-top" class="hidden h-10 w-10 md:h-12 md:w-12 rounded-full shadow-lg bg-prata-accent p-2 text-white transition-all duration-300 hover:bg-prata-dark hover:scale-110 focus:outline-none focus:ring-2 focus:ring-prata-light focus:ring-offset-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-full h-full">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+            </svg>
+        </button>
+    </div>
 </div>
 
 <!-- Pop-up de Evento Melhorado -->
 <div id="event-popup-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[100] flex items-center justify-center p-4 transition-opacity duration-500 opacity-0">
-    <div id="event-popup" class="relative bg-white/60 backdrop-blur-lg rounded-3xl shadow-2xl w-full max-w-2xl mx-auto border border-white/20" style="animation: slide-in-down 0.6s ease-out forwards; opacity: 0;">
+    <div id="event-popup" class="relative bg-white/60 backdrop-blur-lg rounded-3xl shadow-2xl w-full max-w-md md:max-w-2xl mx-auto border border-white/20" style="animation: slide-in-down 0.6s ease-out forwards; opacity: 0;">
         <!-- Botão de Fechar -->
         <button id="close-popup-btn" class="absolute -top-5 -right-5 h-12 w-12 bg-white/80 backdrop-blur-sm rounded-full shadow-lg text-gray-500 hover:text-gray-900 hover:scale-110 hover:rotate-90 transition-all duration-300 z-10 flex items-center justify-center" aria-label="Fechar pop-up">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -684,10 +717,10 @@
         </button>
 
         <!-- Conteúdo do Pop-up -->
-        <div class="p-8 md:p-12">
+        <div class="p-6 md:p-12">
             <div class="flex justify-center items-center gap-3 mb-5">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-prata-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
-                <h2 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-prata-dark to-prata-accent text-center" style="font-family: 'Merriweather', serif;">
+                <h2 class="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-prata-dark to-prata-accent text-center" style="font-family: 'Merriweather', serif;">
                     Semana do Empreendedor!
                 </h2>
             </div>
@@ -717,7 +750,7 @@
 
 <!-- Pop-up Jogos Internos (Épico) -->
 <div id="sports-popup-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[101] flex items-center justify-center p-4 transition-opacity duration-500 opacity-0 hidden">
-    <div id="sports-popup" class="relative w-full max-w-4xl mx-auto transform transition-all duration-500 scale-95 opacity-0 grid grid-cols-1 md:grid-cols-2 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+    <div id="sports-popup" class="relative w-full max-w-sm md:max-w-4xl mx-auto transform transition-all duration-500 scale-95 opacity-0 grid grid-cols-1 md:grid-cols-2 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
         <!-- Botão de Fechar -->
         <button id="close-sports-popup-btn" class="absolute top-4 right-4 h-10 w-10 bg-black/20 backdrop-blur-sm rounded-full text-white hover:bg-black/40 hover:scale-110 hover:rotate-90 transition-all duration-300 z-20 flex items-center justify-center" aria-label="Fechar pop-up">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -731,11 +764,11 @@
         </div>
 
         <!-- Conteúdo do Pop-up -->
-        <div class="relative bg-white/60 backdrop-blur-lg p-8 md:p-12 flex flex-col justify-center text-prata-dark">
+        <div class="relative bg-white/60 backdrop-blur-lg p-6 md:p-12 flex flex-col justify-center text-prata-dark">
             <h2 class="text-sm font-bold uppercase tracking-widest text-prata-accent" style="animation: text-fade-in 0.5s 0.2s ease-out forwards; opacity: 0;">Vem Aí</h2>
-            <h3 class="text-4xl md:text-5xl font-bold mt-2" style="font-family: 'Merriweather', serif; animation: text-fade-in 0.5s 0.4s ease-out forwards; opacity: 0;">Jogos Internos</h3>
+            <h3 class="text-3xl md:text-5xl font-bold mt-2" style="font-family: 'Merriweather', serif; animation: text-fade-in 0.5s 0.4s ease-out forwards; opacity: 0;">Jogos Internos</h3>
             <div class="w-16 h-1 bg-prata-accent my-6" style="animation: text-fade-in 0.5s 0.6s ease-out forwards; opacity: 0;"></div>
-            <p class="text-lg md:text-xl font-semibold" style="animation: text-fade-in 0.5s 0.8s ease-out forwards; opacity: 0;">Primeira Semana de Dezembro</p>
+            <p class="text-base md:text-xl font-semibold" style="animation: text-fade-in 0.5s 0.8s ease-out forwards; opacity: 0;">Primeira Semana de Dezembro</p>
             <a href="#sports" id="sports-popup-cta-btn" class="btn-prata mt-8 py-3 px-6 text-base self-start" style="animation: text-fade-in 0.5s 1s ease-out forwards; opacity: 0;">
                 Saiba Mais
             </a>
