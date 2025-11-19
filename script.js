@@ -213,4 +213,78 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         sectionObserver.observe(section);
     });
+
+    /* --- LÓGICA PARA OS POP-UPS --- */
+    (() => {
+        // Pop-up 1: Semana do Empreendedor
+        const eventPopupOverlay = document.getElementById('event-popup-overlay');
+        const eventPopup = document.getElementById('event-popup');
+        const closeEventBtn = document.getElementById('close-popup-btn');
+
+        // Pop-up 2: Jogos Internos
+        const sportsPopupOverlay = document.getElementById('sports-popup-overlay');
+        const sportsPopup = document.getElementById('sports-popup');
+        const closeSportsBtn = document.getElementById('close-sports-popup-btn');
+        const sportsCtaBtn = document.getElementById('sports-popup-cta-btn'); // Botão "Saiba Mais"
+
+        // --- Funções para o Pop-up de Esportes (2) ---
+        const openSportsPopup = () => {
+            sportsPopupOverlay.classList.remove('hidden');
+            // Pequeno delay para garantir que o display foi aplicado antes de iniciar a transição
+            setTimeout(() => {
+                sportsPopupOverlay.classList.remove('opacity-0');
+                sportsPopup.classList.remove('scale-95', 'opacity-0');
+            }, 50);
+        };
+
+        const closeSportsPopup = () => {
+            sportsPopup.classList.add('scale-95', 'opacity-0');
+            sportsPopupOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                sportsPopupOverlay.classList.add('hidden');
+            }, 500);
+        };
+
+        // --- Funções para o Pop-up de Evento (1) ---
+        const closeEventPopup = () => {
+            eventPopup.style.animation = ''; // Limpa a animação de entrada
+            eventPopup.classList.add('opacity-0'); // Apenas faz o fade out
+            eventPopupOverlay.classList.add('opacity-0');
+            // Espera a transição terminar para esconder o elemento
+            setTimeout(() => {
+                eventPopupOverlay.style.display = 'none';
+                eventPopup.classList.remove('opacity-0'); // Reseta para a próxima abertura
+                openSportsPopup();
+            }, 500); // Deve corresponder à duração da transição (500ms)
+        };
+
+        const openEventPopup = () => {
+            eventPopupOverlay.style.display = 'flex';
+            // Pequeno delay para garantir que o display 'flex' foi aplicado antes de iniciar a transição
+            setTimeout(() => {
+                eventPopupOverlay.classList.remove('opacity-0');
+            }, 10); // Delay mínimo
+        };
+
+        // Abre o primeiro pop-up assim que a página carrega
+        openEventPopup();
+
+        // --- Event Listeners ---
+        closeEventBtn.addEventListener('click', closeEventPopup);
+        eventPopupOverlay.addEventListener('click', (event) => {
+            if (event.target === eventPopupOverlay) {
+                closeEventPopup();
+            }
+        });
+
+        // Fecha o pop-up de esportes ao clicar no botão "Saiba Mais"
+        sportsCtaBtn.addEventListener('click', closeSportsPopup);
+
+        closeSportsBtn.addEventListener('click', closeSportsPopup);
+        sportsPopupOverlay.addEventListener('click', (event) => {
+            if (event.target === sportsPopupOverlay) {
+                closeSportsPopup();
+            }
+        });
+    })();
 });
