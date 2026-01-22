@@ -622,6 +622,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Virtual Tour Logic ---
     const tourThumbnails = document.querySelectorAll('.tour-thumb');
     const tourMainImage = document.getElementById('tour-main-image');
+    const tourLightboxLink = document.getElementById('tour-lightbox-link');
+    const tourLocationTitle = document.getElementById('tour-location-title');
     
     if(tourThumbnails.length > 0 && tourMainImage) {
         tourThumbnails.forEach(thumb => {
@@ -634,12 +636,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 thumb.classList.remove('border-transparent', 'opacity-60');
                 thumb.classList.add('border-blue-500', 'opacity-100');
                 
+                // Update title
+                const titleSpan = thumb.querySelector('span');
+                if (titleSpan && tourLocationTitle) {
+                    tourLocationTitle.textContent = titleSpan.textContent;
+                }
+
                 // Update main image with fade effect
                 const img = thumb.querySelector('img');
                 if(img) {
                     tourMainImage.style.opacity = '0.4';
                     setTimeout(() => {
                         tourMainImage.src = img.src;
+                        if (tourLightboxLink) {
+                            tourLightboxLink.setAttribute('href', img.src);
+                            if (typeof refreshFsLightbox === 'function') refreshFsLightbox();
+                        }
                         tourMainImage.style.opacity = '0.7';
                     }, 200);
                 }

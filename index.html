@@ -261,22 +261,22 @@
                 </div>
                 
                 <!-- 360 Viewer Placeholder -->
-                <div class="relative w-full h-[300px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-700 group bg-black transition-all duration-300">
+                <a id="tour-lightbox-link" data-fslightbox="tour-gallery" href="fotos/pratas (1).png" class="block relative w-full h-[300px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-700 group bg-black transition-all duration-300 cursor-zoom-in">
                     <!-- Placeholder Image -->
                     <img id="tour-main-image" src="fotos/pratas (1).png" alt="Visão 360 da Escola" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async">
                     
                     <!-- Overlay Content -->
-                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
                         <div class="bg-white/10 backdrop-blur-md p-6 rounded-full border border-white/30 shadow-[0_0_30px_rgba(59,130,246,0.5)] group-hover:scale-110 transition-transform duration-300 animate-pulse">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                             </svg>
                         </div>
-                        <h3 class="mt-6 text-2xl font-bold text-white tracking-wider drop-shadow-lg">Ambiente Interativo</h3>
-                        <p class="text-blue-300 mt-2 font-semibold">Selecione um local abaixo</p>
+                        <h3 id="tour-location-title" class="mt-6 text-2xl font-bold text-white tracking-wider drop-shadow-lg">Ambiente Interativo</h3>
+                        <p class="text-blue-300 mt-2 font-semibold">Clique para ampliar</p>
                     </div>
-                </div>
+                </a>
 
                 <!-- Thumbnails / Locations -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8" id="tour-thumbnails">
@@ -972,7 +972,7 @@
             <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-prata-dark text-white text-xs font-bold px-3 py-1.5 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Converse com a IA</span>
         </a>
         <!-- Botão Dúvidas Matrícula -->
-        <a href="https://wa.me/558333106928?text=Ol%C3%A1%2C%20tenho%20d%C3%BAvidas%20sobre%20a%20matr%C3%ADcula%202025" target="_blank" aria-label="Dúvidas sobre Matrícula" class="group relative">
+        <a href="https://wa.me/5583993929453?text=Ol%C3%A1%2C%20tenho%20d%C3%BAvidas%20sobre%20a%20matr%C3%ADcula%202025" target="_blank" aria-label="Dúvidas sobre Matrícula" class="group relative">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 md:h-14 md:w-14 rounded-full shadow-lg bg-blue-600 p-2.5 md:p-3 text-white transition-all duration-300 group-hover:bg-blue-700 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
