@@ -4,23 +4,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerLogo = document.getElementById('header-logo');
     const headerTitle = document.getElementById('header-title');
     const logoLink = document.getElementById('logo-link');
+    
+    let isHeaderShrunk = false;
+
+    // Optimized Scroll Handler with requestAnimationFrame
+    let scrollTicking = false;
+    const backToTopButton = document.getElementById('back-to-top');
+    let isBackToTopVisible = false;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) {
-            header.classList.add('shadow-lg', 'py-2');
-            header.classList.remove('shadow-md', 'py-4');
-            headerLogo.classList.add('h-12', 'w-12');
-            headerLogo.classList.remove('h-16', 'w-16');
-            headerTitle.classList.add('text-lg', 'sm:text-xl');
-            headerTitle.classList.remove('text-xl', 'md:text-2xl');
-        } else {
-            header.classList.remove('shadow-lg', 'py-2');
-            header.classList.add('shadow-md', 'py-4');
-            headerLogo.classList.remove('h-12', 'w-12');
-            headerLogo.classList.add('h-16', 'w-16');
-            headerTitle.classList.remove('text-lg', 'sm:text-xl');
-            headerTitle.classList.add('text-xl', 'md:text-2xl');
+        if (!scrollTicking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+
+                // Header Logic
+                const shouldShrink = scrollY > 10;
+                if (shouldShrink && !isHeaderShrunk) {
+                    header.classList.add('shadow-lg', 'py-2');
+                    header.classList.remove('shadow-md', 'py-4');
+                    headerLogo.classList.add('h-12', 'w-12');
+                    headerLogo.classList.remove('h-16', 'w-16');
+                    headerTitle.classList.add('text-lg', 'sm:text-xl');
+                    headerTitle.classList.remove('text-xl', 'md:text-2xl');
+                    isHeaderShrunk = true;
+                } else if (!shouldShrink && isHeaderShrunk) {
+                    header.classList.remove('shadow-lg', 'py-2');
+                    header.classList.add('shadow-md', 'py-4');
+                    headerLogo.classList.remove('h-12', 'w-12');
+                    headerLogo.classList.add('h-16', 'w-16');
+                    headerTitle.classList.remove('text-lg', 'sm:text-xl');
+                    headerTitle.classList.add('text-xl', 'md:text-2xl');
+                    isHeaderShrunk = false;
+                }
+
+                // Back to Top Logic
+                const shouldShowBackToTop = scrollY > 300;
+                if (shouldShowBackToTop && !isBackToTopVisible) {
+                    backToTopButton.classList.remove('hidden');
+                    isBackToTopVisible = true;
+                } else if (!shouldShowBackToTop && isBackToTopVisible) {
+                    backToTopButton.classList.add('hidden');
+                    isBackToTopVisible = false;
+                }
+
+                scrollTicking = false;
+            });
+            scrollTicking = true;
         }
-    });
+    }, { passive: true });
 
     // Mobile Menu Toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -28,20 +59,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuOpenIcon = document.getElementById('menu-open-icon');
     const menuCloseIcon = document.getElementById('menu-close-icon');
 
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        setTimeout(() => mobileMenu.classList.toggle('is-open'), 10); // Delay for transition
-        menuOpenIcon.classList.toggle('hidden');
-        menuCloseIcon.classList.toggle('hidden');
-    });
+    const toggleMenu = () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        
+        if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            // Force reflow to ensure transition happens
+            requestAnimationFrame(() => {
+                mobileMenu.classList.remove('-translate-y-full');
+            });
+            menuOpenIcon.classList.add('hidden');
+            menuCloseIcon.classList.remove('hidden');
+        } else {
+            mobileMenu.classList.add('-translate-y-full');
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+            menuOpenIcon.classList.remove('hidden');
+            menuCloseIcon.classList.add('hidden');
+        }
+    };
+
+    mobileMenuButton.addEventListener('click', toggleMenu);
     
     // Close mobile menu on link click
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('is-open'); // Reset class
-            menuOpenIcon.classList.remove('hidden');
-            menuCloseIcon.classList.add('hidden');
+            if (!mobileMenu.classList.contains('hidden')) {
+                toggleMenu();
+            }
         });
     });
 
@@ -200,17 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Back to Top Button
-    const backToTopButton = document.getElementById('back-to-top');
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopButton.classList.remove('hidden');
-        } else {
-            backToTopButton.classList.add('hidden');
-        }
-    });
-
     backToTopButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -250,40 +286,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const eventPopup = document.getElementById('event-popup');
         const closeEventBtn = document.getElementById('close-popup-btn');
 
-        // Pop-up 2: Jogos Internos
-        const sportsPopupOverlay = document.getElementById('sports-popup-overlay');
-        const sportsPopup = document.getElementById('sports-popup');
-        const closeSportsBtn = document.getElementById('close-sports-popup-btn');
-        const sportsCtaBtn = document.getElementById('sports-popup-cta-btn'); // Botão "Saiba Mais"
-
-        // --- Funções para o Pop-up de Esportes (2) ---
-        const openSportsPopup = () => {
-            sportsPopupOverlay.classList.remove('hidden');
+        // Pop-up 2: 
+        const vocationalPromoOverlay = document.getElementById('vocational-promo-popup-overlay');
+        const vocationalPromoPopup = document.getElementById('vocational-promo-popup');
+        const vocationalPromoCtaBtn = document.getElementById('vocational-promo-cta-btn');
+        const closeVocationalPromoBtn = document.getElementById('close-vocational-promo-btn');
+        // --- Funções para o Pop-up de Sugestão Vocacional ---
+        const openVocationalPromoPopup = () => {
+            vocationalPromoOverlay.classList.remove('hidden');
             // Pequeno delay para garantir que o display foi aplicado antes de iniciar a transição
             setTimeout(() => {
-                sportsPopupOverlay.classList.remove('opacity-0');
-                sportsPopup.classList.remove('scale-95', 'opacity-0');
+                vocationalPromoOverlay.classList.remove('opacity-0');
+                vocationalPromoPopup.classList.remove('scale-95', 'opacity-0');
             }, 50);
         };
 
-        const closeSportsPopup = () => {
-            sportsPopup.classList.add('scale-95', 'opacity-0');
-            sportsPopupOverlay.classList.add('opacity-0');
+        const closeVocationalPromoPopup = () => {
+            vocationalPromoPopup.classList.add('scale-95', 'opacity-0');
+            vocationalPromoOverlay.classList.add('opacity-0');
             setTimeout(() => {
-                sportsPopupOverlay.classList.add('hidden');
+                vocationalPromoOverlay.classList.add('hidden');
             }, 500);
         };
 
         // --- Funções para o Pop-up de Evento (1) ---
         const closeEventPopup = () => {
-            eventPopup.style.animation = ''; // Limpa a animação de entrada
-            eventPopup.classList.add('opacity-0'); // Apenas faz o fade out
-            eventPopupOverlay.classList.add('opacity-0');
+            eventPopup.classList.add('opacity-0'); // Oculta visualmente
             // Espera a transição terminar para esconder o elemento
             setTimeout(() => {
                 eventPopupOverlay.style.display = 'none';
                 eventPopup.classList.remove('opacity-0'); // Reseta para a próxima abertura
-                openSportsPopup();
+
+                // Abre o pop-up de sugestão vocacional após fechar o de evento
+                if (!sessionStorage.getItem('vocationalPopupShown')) {
+                    setTimeout(() => {
+                        openVocationalPromoPopup();
+                        sessionStorage.setItem('vocationalPopupShown', 'true');
+                    }, 1500);
+                }
             }, 500); // Deve corresponder à duração da transição (500ms)
         };
 
@@ -297,12 +337,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Controle de Exibição dos Pop-ups ---
         // Verifica se os pop-ups já foram mostrados nesta sessão
-        if (!sessionStorage.getItem('popupsShown')) {
-            // Abre o primeiro pop-up após um pequeno delay para não sobrecarregar o carregamento inicial
+        if (!sessionStorage.getItem('eventPopupShown')) {
+            // Mostra o primeiro pop-up após um pequeno delay para não sobrecarregar o carregamento inicial
             setTimeout(() => {
                 openEventPopup();
-                sessionStorage.setItem('popupsShown', 'true'); // Marca que os pop-ups foram exibidos
-            }, 1500); // Atraso de 1.5 segundos
+                sessionStorage.setItem('eventPopupShown', 'true'); 
+            }, 1000); 
+        } else if (!sessionStorage.getItem('vocationalPopupShown')) {
+            // Se o de evento já foi visto, mostra o vocacional após um tempo
+            setTimeout(() => {
+                openVocationalPromoPopup();
+                sessionStorage.setItem('vocationalPopupShown', 'true');
+            }, 3000);
         }
 
         // --- Event Listeners ---
@@ -313,17 +359,291 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Fecha o pop-up de esportes ao clicar no botão "Saiba Mais"
-        sportsCtaBtn.addEventListener('click', closeSportsPopup);
+        // Botão "Fazer Teste Grátis" no pop-up de sugestão
+        vocationalPromoCtaBtn.addEventListener('click', () => {
+            closeVocationalPromoPopup();
+            // Abre o modal do teste vocacional real
+            document.getElementById('open-vocational-test-btn').click();
+        });
 
-        closeSportsBtn.addEventListener('click', closeSportsPopup);
-        sportsPopupOverlay.addEventListener('click', (event) => {
-            if (event.target === sportsPopupOverlay) {
-                closeSportsPopup();
+        closeVocationalPromoBtn.addEventListener('click', closeVocationalPromoPopup);
+        vocationalPromoOverlay.addEventListener('click', (event) => {
+            if (event.target === vocationalPromoOverlay) {
+                closeVocationalPromoPopup();
             }
         });
     })();
 
-    // Initialize active tab indicator on page load
-    updateIndicator(document.querySelector('.course-tab.active'));
+    // Iniloba
+    // --- Vocational Test Logic ---
+    const vocationalOverlay = document.getElementById('vocational-modal-overlay');
+    const vocationalModal = document.getElementById('vocational-modal');
+    const openVocationalBtn = document.getElementById('open-vocational-test-btn');
+    const closeVocationalBtn = document.getElementById('close-vocational-modal-btn');
+    
+    // Quiz Elements
+    const startScreen = document.getElementById('vocational-start');
+    const quizScreen = document.getElementById('vocational-quiz');
+    const resultScreen = document.getElementById('vocational-result');
+    const startQuizBtn = document.getElementById('start-quiz-btn');
+    const restartQuizBtn = document.getElementById('restart-quiz-btn');
+    
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const questionCounter = document.getElementById('question-counter');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+
+    // Result Elements
+    const resultCourseName = document.getElementById('result-course-name');
+    const resultDescription = document.getElementById('result-description');
+    const resultWhatsappLink = document.getElementById('result-whatsapp-link');
+    const shareWhatsappBtn = document.getElementById('share-whatsapp');
+    const shareTwitterBtn = document.getElementById('share-twitter');
+    const downloadResultBtn = document.getElementById('download-result-btn');
+
+    // Chart Elements
+    const barAdm = document.getElementById('bar-adm');
+    const scoreAdm = document.getElementById('score-adm');
+    const barGas = document.getElementById('bar-gas');
+    const scoreGas = document.getElementById('score-gas');
+    const barSis = document.getElementById('bar-sis');
+    const scoreSis = document.getElementById('score-sis');
+
+    // Quiz Data
+    const questions = [
+        {
+            text: "O que você prefere fazer no seu tempo livre?",
+            options: [
+                { text: "Cozinhar, testar receitas ou assistir vídeos de comida", type: "gastronomia" },
+                { text: "Jogar videogame, mexer no computador ou celular", type: "sistemas" },
+                { text: "Organizar suas coisas, planejar a semana ou liderar grupos", type: "administracao" }
+            ]
+        },
+        {
+            text: "Em um trabalho em grupo, qual papel você geralmente assume?",
+            options: [
+                { text: "Lidero, organizo as tarefas e garanto que todos cumpram os prazos", type: "administracao" },
+                { text: "Cuido da parte visual, criativa ou prática da apresentação", type: "gastronomia" },
+                { text: "Fico responsável pela pesquisa técnica, dados e formatação lógica", type: "sistemas" }
+            ]
+        },
+        {
+            text: "O que mais te chama atenção em uma carreira?",
+            options: [
+                { text: "Gerenciar pessoas, negócios e tomar decisões estratégicas", type: "administracao" },
+                { text: "Criar experiências sensoriais e trabalhar com arte e cultura", type: "gastronomia" },
+                { text: "Resolver problemas complexos e criar inovações tecnológicas", type: "sistemas" }
+            ]
+        },
+        {
+            text: "Como você lida com problemas inesperados?",
+            options: [
+                { text: "Analiso os recursos disponíveis e delego funções para resolver", type: "administracao" },
+                { text: "Improviso com criatividade usando o que tenho à mão", type: "gastronomia" },
+                { text: "Busco a causa raiz lógica e tento consertar o sistema", type: "sistemas" }
+            ]
+        },
+        {
+            text: "Qual disciplina escolar você tem mais afinidade?",
+            options: [
+                { text: "História, Geografia ou Matemática Financeira", type: "administracao" },
+                { text: "Química, Biologia ou Artes", type: "gastronomia" },
+                { text: "Física, Matemática ou Informática", type: "sistemas" }
+            ]
+        },
+        {
+            text: "Se você fosse abrir um negócio, qual seria?",
+            options: [
+                { text: "Uma consultoria empresarial ou uma startup de gestão", type: "administracao" },
+                { text: "Um restaurante, bistrô ou confeitaria", type: "gastronomia" },
+                { text: "Uma empresa de software, aplicativos ou games", type: "sistemas" }
+            ]
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let scores = { administracao: 0, gastronomia: 0, sistemas: 0 };
+
+    if (openVocationalBtn && vocationalOverlay) {
+        openVocationalBtn.addEventListener('click', () => {
+            vocationalOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                vocationalOverlay.classList.remove('opacity-0');
+                vocationalModal.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+        });
+
+        // Close Modal
+        const closeVocationalModal = () => {
+            vocationalModal.classList.add('scale-95', 'opacity-0');
+            vocationalOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                vocationalOverlay.classList.add('hidden');
+                resetQuiz(); // Reset on close
+            }, 300);
+        };
+
+        closeVocationalBtn.addEventListener('click', closeVocationalModal);
+        vocationalOverlay.addEventListener('click', (e) => {
+            if (e.target === vocationalOverlay) closeVocationalModal();
+        });
+
+        if (downloadResultBtn) {
+            downloadResultBtn.addEventListener('click', () => {
+                html2canvas(document.getElementById('vocational-result'), { backgroundColor: '#ffffff', scale: 2 }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'Meu-Resultado-ECIT-Prata.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            });
+        }
+
+        // Quiz Logic
+        startQuizBtn.addEventListener('click', () => {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            loadQuestion();
+        });
+
+        restartQuizBtn.addEventListener('click', resetQuiz);
+
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionText.innerText = currentQuestion.text;
+            optionsContainer.innerHTML = '';
+
+            // Update Progress
+            const progress = ((currentQuestionIndex) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.innerText = `${Math.round(progress)}%`;
+            questionCounter.innerText = `Pergunta ${currentQuestionIndex + 1} de ${questions.length}`;
+
+            currentQuestion.options.forEach(option => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-left p-4 rounded-lg border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-gray-700 font-medium';
+                btn.innerText = option.text;
+                btn.onclick = () => selectOption(option.type);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(type) {
+            scores[type]++;
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            
+            // Determine winner
+            let winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+            
+            // Content mapping
+            const results = {
+                administracao: {
+                    name: "Técnico em Administração",
+                    desc: "Você é um líder nato! Seu perfil indica uma forte capacidade de organização, estratégia e gestão de pessoas. O curso de Administração vai aprimorar sua visão de negócios e prepará-lo para comandar grandes projetos.",
+                    msg: "Ol%C3%A1%2C%20fiz%20o%20teste%20vocacional%20e%20deu%20Administra%C3%A7%C3%A3o!%20Quero%20saber%20mais."
+                },
+                gastronomia: {
+                    name: "Técnico em Gastronomia",
+                    desc: "Você tem alma de artista e criador! Sua afinidade com processos práticos e sensoriais mostra que a Gastronomia é o seu lugar. Prepare-se para transformar ingredientes em experiências inesquecíveis.",
+                    msg: "Ol%C3%A1%2C%20fiz%20o%20teste%20vocacional%20e%20deu%20Gastronomia!%20Quero%20saber%20mais."
+                },
+                sistemas: {
+                    name: "Desenvolvimento de Sistemas",
+                    desc: "Você é o futuro da inovação! Seu raciocínio lógico e interesse por tecnologia indicam que você nasceu para o Desenvolvimento de Sistemas. Aqui você aprenderá a criar as soluções digitais que movem o mundo.",
+                    msg: "Ol%C3%A1%2C%20fiz%20o%20teste%20vocacional%20e%20deu%20Sistemas!%20Quero%20saber%20mais."
+                }
+            };
+
+            const result = results[winner];
+            resultCourseName.innerText = result.name;
+            resultDescription.innerText = result.desc;
+            resultWhatsappLink.href = `https://wa.me/558333106928?text=${result.msg}`;
+
+            // Update Share Links
+            const shareText = `Fiz o teste vocacional da ECIT Prata e meu perfil ideal é ${result.name}! 🚀 Descubra o seu futuro também.`;
+            const shareUrl = window.location.href; // Pega a URL atual do site
+            const encodedText = encodeURIComponent(shareText);
+            const encodedUrl = encodeURIComponent(shareUrl);
+
+            if(shareWhatsappBtn) shareWhatsappBtn.href = `https://api.whatsapp.com/send?text=${encodedText}%20${encodedUrl}`;
+            if(shareTwitterBtn) shareTwitterBtn.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+
+            // Update Chart
+            const total = questions.length;
+            const admPercent = Math.round((scores.administracao / total) * 100);
+            const gasPercent = Math.round((scores.gastronomia / total) * 100);
+            const sisPercent = Math.round((scores.sistemas / total) * 100);
+
+            // Use setTimeout to allow transition to happen after display block
+            setTimeout(() => {
+                if(barAdm) { barAdm.style.width = `${admPercent}%`; scoreAdm.innerText = `${admPercent}%`; }
+                if(barGas) { barGas.style.width = `${gasPercent}%`; scoreGas.innerText = `${gasPercent}%`; }
+                if(barSis) { barSis.style.width = `${sisPercent}%`; scoreSis.innerText = `${sisPercent}%`; }
+
+                // Trigger Confetti
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 150,
+                        spread: 70,
+                        origin: { y: 0.6 },
+                        colors: ['#2563eb', '#fbbf24', '#10b981'], // Cores da escola/cursos
+                        zIndex: 200 // Garante que apareça acima do modal (z-[110])
+                    });
+                }
+            }, 100);
+        }
+
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            scores = { administracao: 0, gastronomia: 0, sistemas: 0 };
+            resultScreen.classList.add('hidden');
+            quizScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+            
+            // Reset bars
+            if(barAdm) { barAdm.style.width = '0%'; scoreAdm.innerText = '0%'; }
+            if(barGas) { barGas.style.width = '0%'; scoreGas.innerText = '0%'; }
+            if(barSis) { barSis.style.width = '0%'; scoreSis.innerText = '0%'; }
+        }
+    }
+
+    // --- Virtual Tour Logic ---
+    const tourThumbnails = document.querySelectorAll('.tour-thumb');
+    const tourMainImage = document.getElementById('tour-main-image');
+    
+    if(tourThumbnails.length > 0 && tourMainImage) {
+        tourThumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                // Update active state styles
+                tourThumbnails.forEach(t => {
+                    t.classList.remove('border-blue-500', 'opacity-100');
+                    t.classList.add('border-transparent', 'opacity-60');
+                });
+                thumb.classList.remove('border-transparent', 'opacity-60');
+                thumb.classList.add('border-blue-500', 'opacity-100');
+                
+                // Update main image with fade effect
+                const img = thumb.querySelector('img');
+                if(img) {
+                    tourMainImage.style.opacity = '0.4';
+                    setTimeout(() => {
+                        tourMainImage.src = img.src;
+                        tourMainImage.style.opacity = '0.7';
+                    }, 200);
+                }
+            });
+        });
+    }
 });
