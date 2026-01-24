@@ -109,8 +109,15 @@ header nav a::after {
     animation: heroFadeIn 1.2s 0.2s ease-out forwards; /* Adicionado delay */
 }
 
+/* Performance Optimization */
+main section:not(:first-of-type) {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px; /* Estimativa de altura para evitar layout shifts drásticos ao rolar */
+}
+
 .hero-bg-animate {
     animation: subtle-zoom-in 20s infinite alternate ease-in-out;
+    will-change: transform;
 }
 
 .course-tabs-scroller {
@@ -157,7 +164,7 @@ header nav a::after {
 }
 
 /* Tablet adjustments */
-@media (min-width: 641px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .section-divider {
         width: 60px;
         margin: 20px auto;
@@ -182,6 +189,15 @@ header nav a::after {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@keyframes quizFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-animate-in {
+    animation: quizFadeIn 0.4s ease-out forwards;
 }
 
 .animated-section {

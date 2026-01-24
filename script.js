@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Optimized Scroll Handler with requestAnimationFrame
     let scrollTicking = false;
     const backToTopButton = document.getElementById('back-to-top');
+    const scrollProgressBar = document.getElementById('scroll-progress-bar');
     let isBackToTopVisible = false;
 
     window.addEventListener('scroll', () => {
@@ -36,6 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     headerTitle.classList.add('text-xl', 'md:text-2xl');
                     isHeaderShrunk = false;
                 }
+
+                // Scroll Progress Bar Logic
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                if (scrollProgressBar) scrollProgressBar.style.width = scrolled + "%";
 
                 // Back to Top Logic
                 const shouldShowBackToTop = scrollY > 300;
@@ -285,6 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const eventPopupOverlay = document.getElementById('event-popup-overlay');
         const eventPopup = document.getElementById('event-popup');
         const closeEventBtn = document.getElementById('close-popup-btn');
+        const eventPopupCta = document.getElementById('event-popup-cta');
 
         // Pop-up 2: 
         const vocationalPromoOverlay = document.getElementById('vocational-promo-popup-overlay');
@@ -311,11 +319,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Funções para o Pop-up de Evento (1) ---
         const closeEventPopup = () => {
-            eventPopup.classList.add('opacity-0'); // Oculta visualmente
+            eventPopupOverlay.classList.add('opacity-0'); // Oculta visualmente o overlay inteiro
             // Espera a transição terminar para esconder o elemento
             setTimeout(() => {
                 eventPopupOverlay.style.display = 'none';
-                eventPopup.classList.remove('opacity-0'); // Reseta para a próxima abertura
 
                 // Abre o pop-up de sugestão vocacional após fechar o de evento
                 if (!sessionStorage.getItem('vocationalPopupShown')) {
@@ -358,6 +365,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeEventPopup();
             }
         });
+
+        // Fecha o pop-up ao clicar no botão "Saiba Mais"
+        if (eventPopupCta) {
+            eventPopupCta.addEventListener('click', closeEventPopup);
+        }
 
         // Botão "Fazer Teste Grátis" no pop-up de sugestão
         vocationalPromoCtaBtn.addEventListener('click', () => {
@@ -509,10 +521,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         restartQuizBtn.addEventListener('click', resetQuiz);
 
+        // Helper to get icons for options
+        const getIconForType = (type) => {
+            const icons = {
+                administracao: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>`,
+                gastronomia: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>`, // Using book/menu icon as generic
+                sistemas: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`
+            };
+            // Specific override for Gastronomy to look more like food if needed, or keep generic
+            if (type === 'gastronomia') {
+                 return `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>`;
+            }
+            return icons[type] || '';
+        };
+
         function loadQuestion() {
             const currentQuestion = questions[currentQuestionIndex];
             questionText.innerText = currentQuestion.text;
             optionsContainer.innerHTML = '';
+            
+            // Add animation class to container
+            quizScreen.classList.remove('quiz-animate-in');
+            void quizScreen.offsetWidth; // Trigger reflow
+            quizScreen.classList.add('quiz-animate-in');
 
             // Update Progress
             const progress = ((currentQuestionIndex) / questions.length) * 100;
@@ -522,22 +553,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
             currentQuestion.options.forEach(option => {
                 const btn = document.createElement('button');
-                btn.className = 'w-full text-left p-4 rounded-lg border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-gray-700 font-medium';
-                btn.innerText = option.text;
-                btn.onclick = () => selectOption(option.type);
+                btn.className = 'w-full text-left p-4 rounded-xl border-2 border-gray-100 hover:border-blue-400 hover:bg-blue-50 transition-all duration-200 text-gray-700 font-medium flex items-center gap-4 group';
+                
+                // Icon container
+                const iconDiv = document.createElement('div');
+                iconDiv.className = 'p-2 bg-gray-100 rounded-full text-gray-500 group-hover:bg-blue-200 group-hover:text-blue-700 transition-colors';
+                iconDiv.innerHTML = getIconForType(option.type);
+                
+                const textSpan = document.createElement('span');
+                textSpan.innerText = option.text;
+
+                btn.appendChild(iconDiv);
+                btn.appendChild(textSpan);
+                
+                btn.onclick = () => selectOption(option.type, btn);
                 optionsContainer.appendChild(btn);
             });
         }
 
-        function selectOption(type) {
-            scores[type]++;
-            currentQuestionIndex++;
+        function selectOption(type, btnElement) {
+            // Visual Feedback
+            const allBtns = optionsContainer.querySelectorAll('button');
+            allBtns.forEach(b => b.disabled = true); // Prevent multiple clicks
+            btnElement.classList.remove('border-gray-100', 'hover:border-blue-400');
+            btnElement.classList.add('border-blue-600', 'bg-blue-100', 'ring-2', 'ring-blue-200');
 
-            if (currentQuestionIndex < questions.length) {
-                loadQuestion();
-            } else {
-                showResult();
-            }
+            setTimeout(() => {
+                scores[type]++;
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResult();
+                }
+            }, 400); // Short delay for better UX
         }
 
         function showResult() {
@@ -658,4 +707,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Lazy Load Iframes (YouTube & Google Maps)
+    const lazyIframes = document.querySelectorAll('iframe[data-src]');
+    const iframeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const iframe = entry.target;
+                iframe.src = iframe.dataset.src;
+                iframe.onload = () => iframe.classList.remove('opacity-0');
+                iframe.removeAttribute('data-src');
+                observer.unobserve(iframe);
+            }
+        });
+    }, { rootMargin: '200px' }); // Start loading 200px before viewport
+
+    lazyIframes.forEach(iframe => {
+        iframeObserver.observe(iframe);
+    });
 });
